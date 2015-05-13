@@ -1,8 +1,18 @@
 Package: ezrender
-Title: What the Package Does (one line, title case)
+Title: Render Markdown/HTML Reports from R Without the Typical Pain of Dealing with Working Directories
 Version: 0.0.0.9000
-Authors@R: person("First", "Last", email = "first.last@example.com", role = c("aut", "cre"))
-Description: What the package does (one paragraph)
-Depends: R (>= 3.2.0)
-License: What license is it under?
+Authors@R: "Dean Attali <daattali@gmail.com> [aut, cre]"
+Description: Render Markdown/HTML Reports from R Without the Typical Pain of
+    Dealing with Working Directories.
+URL: https://github.com/daattali/ezrender
+Depends:
+    R (>= 3.0.2)
+Imports:
+    knitr (>= 1.7),
+    markdown (>= 0.7)
+Suggests:
+    R.utils (>= 1.34.0),
+    testthat (>= 0.9.1)
+License: MIT + file LICENSE
 LazyData: true
+VignetteBuilder: knitr
