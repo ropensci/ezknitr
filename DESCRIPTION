@@ -1,6 +1,6 @@
 Package: ezrender
 Title: Render Markdown/HTML Reports from R Without the Typical Pain of Dealing with Working Directories
-Version: 0.0.0.9000
+Version: 0.0.0.9001
 Authors@R: "Dean Attali <daattali@gmail.com> [aut, cre]"
 Description: Render Markdown/HTML Reports from R Without the Typical Pain of
     Dealing with Working Directories.

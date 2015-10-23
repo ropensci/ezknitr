@@ -45,9 +45,11 @@
 #' \code{DATASET_NAME}, then you can use
 #' \code{params = list('DATASET_NAME' = 'oct10dat')}
 #' @param warn If TRUE, then show warnings (recommended to keep this on)
+#' @param keepRmd,keepMd Should intermediate \code{Rmd} or \code{md} files be
+#'   kept (\code{TRUE}) or deleted (\code{FALSE})?
 #' @return The path to the output (invisibly).
 #' @section Possible future improvements:
-#' - Add support to only produce one of [Rmd, md, HTML]
+#' - Add support to avoid producing the HTML file
 #' @section Detailed Arguments:
 #' All paths given in the arguments can be either absolute or relative.
 #'
@@ -81,10 +83,10 @@
 #' @seealso \code{\link[knitr]{spin}}
 #' @seealso \code{\link[ezrender]{setup_ezspin_test}}
 ezspin <- function(file, wd, outDir, figDir, outSuffix,
-                    params = list(),
-                    verbose = FALSE,
-                    chunkOpts = list(tidy = FALSE, error = FALSE),
-                    warn = TRUE) {
+                   params = list(),
+                   verbose = FALSE,
+                   chunkOpts = list(tidy = FALSE, error = FALSE),
+                   warn = TRUE, keepRmd = FALSE, keepMd = TRUE) {
   if (warn) {
     if (!requireNamespace("R.utils", quietly = TRUE)) {
       warning("`R.utils` package is recommended for this function to work.",
@@ -214,8 +216,14 @@ ezspin <- function(file, wd, outDir, figDir, outSuffix,
               fileMd,
               quiet = !verbose,
               envir = ezspin_env)
+  if (!keepRmd) {
+    unlink(fileRmd)
+  }
   markdown::markdownToHTML(fileMd,
                            fileHtml)
+  if (!keepMd) {
+    unlink(fileMd)
+  }
 
   message(paste0("ezspin output in\n", outDir))
 
