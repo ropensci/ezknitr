@@ -8,12 +8,12 @@
 #' @return The path to the output (invisibly).
 #' @export
 #' @seealso \code{\link[ezknitr]{ezspin}}
-ezknit <- function(file, wd, outDir, figDir, outSuffix,
+ezknit <- function(file, wd, out_dir, fig_dir, out_suffix,
                    params = list(),
                    verbose = FALSE,
-                   chunkOpts = list(tidy = FALSE)) {
+                   chunk_opts = list(tidy = FALSE)) {
   ezknitr_helper(caller = "ezknit",
-                 file = file, wd = wd, outDir = outDir,
-                 figDir = figDir, outSuffix = outSuffix,
-                 params = params, verbose = verbose, chunkOpts = chunkOpts)
+                 file = file, wd = wd, out_dir = out_dir,
+                 fig_dir = fig_dir, out_suffix = out_suffix,
+                 params = params, verbose = verbose, chunk_opts = chunk_opts)
 }

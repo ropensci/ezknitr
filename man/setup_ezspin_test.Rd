@@ -33,7 +33,7 @@ setup_ezspin_test("..")
 ezspin("R/ezspin_test.R", wd = "container")
 setup_ezspin_test("..")
 ezspin("R/ezspin_test.R", wd = "container",
-        outDir = "output", figDir = "coolplots")
+        out_dir = "output", fig_dir = "coolplots")
 setwd(origwd)
 unlink(tmp, recursive = TRUE, force = TRUE)
 }

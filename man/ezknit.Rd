@@ -4,8 +4,8 @@
 \alias{ezknit}
 \title{Create markdown/HTML reports from Rmd files with no hassle}
 \usage{
-ezknit(file, wd, outDir, figDir, outSuffix, params = list(),
-  verbose = FALSE, chunkOpts = list(tidy = FALSE))
+ezknit(file, wd, out_dir, fig_dir, out_suffix, params = list(),
+  verbose = FALSE, chunk_opts = list(tidy = FALSE))
 }
 \arguments{
 \item{file}{The path to the R script (if \code{wd} is provided, then this
@@ -14,15 +14,15 @@ path is relative to \code{wd}).}
 \item{wd}{The working directory to be used in the R script. See 'Detailed:
 Arguments'.}
 
-\item{outDir}{The output directory (if \code{wd} is provided, then this path
+\item{out_dir}{The output directory (if \code{wd} is provided, then this path
 is relative to \code{wd}). Defaults to the directory containing the R script.}
 
-\item{figDir}{The name (or path) of the directory containing the figures
+\item{fig_dir}{The name (or path) of the directory containing the figures
 generated for the markdown document. See 'Detailed Arguments'.}
 
-\item{outSuffix}{A suffix to add to the output files, can be used to
+\item{out_suffix}{A suffix to add to the output files, can be used to
 differentiate outputs from runs with different parameters. The name of the
-output files is the name of the input script appended by \code{outSuffix},
+output files is the name of the input script appended by \code{out_suffix},
 separated by a dash.}
 
 \item{params}{A named list of parameters to be passed on to the R script.
@@ -32,7 +32,7 @@ For example, if the script to execute assumes that there is a variable named
 
 \item{verbose}{If TRUE, then show the progress of knitting the document.}
 
-\item{chunkOpts}{List of chunk options to use. See \code{?knitr::opts_chunk}
+\item{chunk_opts}{List of chunk options to use. See \code{?knitr::opts_chunk}
 for a list of chunk options.}
 }
 \value{

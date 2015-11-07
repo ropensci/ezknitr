@@ -15,20 +15,20 @@ dotsToChar <- function(...) {
 
 # Main powerhorse function that runs the logic for ezknit and ezspin
 ezknitr_helper <- function(caller,
-                           file, wd, outDir, figDir, outSuffix,
+                           file, wd, out_dir, fig_dir, out_suffix,
                            params = list(),
                            verbose = FALSE,
-                           chunkOpts = list(tidy = FALSE),
-                           keepRmd = FALSE, keepMd = TRUE) {
+                           chunk_opts = list(tidy = FALSE),
+                           keep_rmd = FALSE, keep_md = TRUE) {
   caller <- match.arg(caller, c("ezspin", "ezknit"))
   
-  if (missing(outSuffix)) {
-    outSuffix <- ""
+  if (missing(out_suffix)) {
+    out_suffix <- ""
   } else {
-    if (is.string(outSuffix)) {
-      outSuffix <- paste0("-", outSuffix)
+    if (is.string(out_suffix)) {
+      out_suffix <- paste0("-", out_suffix)
     } else {
-      stop("`outSuffix` is not a valid string.",
+      stop("`out_suffix` is not a valid string.",
            call. = FALSE)
     }
   }
@@ -67,13 +67,13 @@ ezknitr_helper <- function(caller,
   
   # Default output directory is where input is located, otherwise build the path
   # relative to the working directory
-  if (missing(outDir)) {
-    outDir <- inputDir
-  } else if(!R.utils::isAbsolutePath(outDir)) {
-    outDir <- file.path(wd, outDir)
+  if (missing(out_dir)) {
+    out_dir <- inputDir
+  } else if(!R.utils::isAbsolutePath(out_dir)) {
+    out_dir <- file.path(wd, out_dir)
   }
-  dir.create(outDir, recursive = TRUE, showWarnings = FALSE)
-  outDir <- normalizePath(outDir)
+  dir.create(out_dir, recursive = TRUE, showWarnings = FALSE)
+  out_dir <- normalizePath(out_dir)
   
   # Get the filenames for all intermediate files
   if (caller == "ezspin") {
@@ -81,20 +81,20 @@ ezknitr_helper <- function(caller,
   } else if (caller == "ezknit") {
     fileNameOrig <- sub("(\\.[rR]md)$", "", basename(file))
   }
-  fileName <- paste0(fileNameOrig, outSuffix)
+  fileName <- paste0(fileNameOrig, out_suffix)
   fileRmdOrig <- file.path(inputDir, paste0(fileNameOrig, ".Rmd"))
-  fileRmd <- file.path(outDir, paste0(fileName, ".Rmd"))
-  fileMd <- file.path(outDir, paste0(fileName, ".md"))
-  fileHtml <- file.path(outDir, paste0(fileName, ".html"))
+  fileRmd <- file.path(out_dir, paste0(fileName, ".Rmd"))
+  fileMd <- file.path(out_dir, paste0(fileName, ".md"))
+  fileHtml <- file.path(out_dir, paste0(fileName, ".html"))
   
-  if (missing(figDir)) {
-    figDir <- fileName
+  if (missing(fig_dir)) {
+    fig_dir <- fileName
   }
   
   # On Windows (as opposed to unix systems), file.path does not append a
   # separator at the end, so add one manually to ensure this works
   # cross-platform
-  figDir <- file.path(figDir, .Platform$file.sep)
+  fig_dir <- file.path(fig_dir, .Platform$file.sep)
   
   # Save a copy of the original knitr and chunk options and revert back to them
   # when the function exits
@@ -107,11 +107,11 @@ ezknitr_helper <- function(caller,
   
   # Set up the directories correctly (this took many many hours to figure out..)
   knitr::opts_knit$set(root.dir = wd)
-  knitr::opts_knit$set(base.dir = outDir)
-  knitr::opts_chunk$set(fig.path = figDir)
+  knitr::opts_knit$set(base.dir = out_dir)
+  knitr::opts_chunk$set(fig.path = fig_dir)
   
   # Use the user-defined chunk options
-  knitr::opts_chunk$set(chunkOpts)
+  knitr::opts_chunk$set(chunk_opts)
   
   # Create the figure directory if it doesn't exist (otherwise we get errors)
   fullFigPath <- file.path(knitr::opts_knit$get("base.dir"),
@@ -128,8 +128,8 @@ ezknitr_helper <- function(caller,
     # Because of a bug in knitr, the figures directory is created in the
     # working directory with nothing in it, as well as being created where it
     # should be and with the right files inside. Delete that folder.
-    figDirName <- file.path(dirname(figDir), basename(figDir))
-    suppressWarnings(unlink(figDirName, recursive = TRUE))
+    fig_dirName <- file.path(dirname(fig_dir), basename(fig_dir))
+    suppressWarnings(unlink(fig_dirName, recursive = TRUE))
     
     # If no figures are generated, remove the figures folder
     if (length(list.files(fullFigPath)) == 0) {
@@ -152,16 +152,16 @@ ezknitr_helper <- function(caller,
               fileMd,
               quiet = !verbose,
               envir = ezknitr_env)
-  if (caller == "ezspin" && !keepRmd) {
+  if (caller == "ezspin" && !keep_rmd) {
     unlink(fileRmd)
   }
   markdown::markdownToHTML(fileMd,
                            fileHtml)
-  if (caller == "ezspin" && !keepMd) {
+  if (caller == "ezspin" && !keep_md) {
     unlink(fileMd)
   }
   
-  message(paste0(caller, " output in\n", outDir))
+  message(paste0(caller, " output in\n", out_dir))
   
-  invisible(outDir)
+  invisible(out_dir)
 }

@@ -21,7 +21,7 @@
 #' ezspin("R/ezspin_test.R", wd = "container")
 #' setup_ezspin_test("..")
 #' ezspin("R/ezspin_test.R", wd = "container",
-#'         outDir = "output", figDir = "coolplots")
+#'         out_dir = "output", fig_dir = "coolplots")
 #' setwd(origwd)
 #' unlink(tmp, recursive = TRUE, force = TRUE)
 #' }
@@ -56,7 +56,7 @@ setup_ezspin_test <- function(loc = getwd()) {
   message('   1.   knitr::spin("container/R/ezspin_test.R")')
   message('   2.   ezknitr::ezspin("R/ezspin_test.R", wd = "container")')
   message('   3.   ezknitr::ezspin("R/ezspin_test.R", wd = "container",')
-  message('                        outDir = "output", figDir = "coolplots")')
+  message('                        out_dir = "output", fig_dir = "coolplots")')
 
   message(paste0('\nNote: to start with a clean state after each of the above ',
                  'commands, run `ezknitr::setup_ezspin_test("..")` to set up the demo ',

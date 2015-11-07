@@ -29,22 +29,22 @@
 #' path is relative to \code{wd}).
 #' @param wd The working directory to be used in the R script. See 'Detailed:
 #' Arguments'.
-#' @param outDir The output directory (if \code{wd} is provided, then this path
+#' @param out_dir The output directory (if \code{wd} is provided, then this path
 #' is relative to \code{wd}). Defaults to the directory containing the R script.
-#' @param figDir The name (or path) of the directory containing the figures
+#' @param fig_dir The name (or path) of the directory containing the figures
 #' generated for the markdown document. See 'Detailed Arguments'.
-#' @param outSuffix A suffix to add to the output files, can be used to
+#' @param out_suffix A suffix to add to the output files, can be used to
 #' differentiate outputs from runs with different parameters. The name of the
-#' output files is the name of the input script appended by \code{outSuffix},
+#' output files is the name of the input script appended by \code{out_suffix},
 #' separated by a dash.
-#' @param chunkOpts List of chunk options to use. See \code{?knitr::opts_chunk}
+#' @param chunk_opts List of chunk options to use. See \code{?knitr::opts_chunk}
 #' for a list of chunk options.
 #' @param verbose If TRUE, then show the progress of knitting the document.
 #' @param params A named list of parameters to be passed on to the R script.
 #' For example, if the script to execute assumes that there is a variable named
 #' \code{DATASET_NAME}, then you can use
 #' \code{params = list('DATASET_NAME' = 'oct10dat')}
-#' @param keepRmd,keepMd Should intermediate \code{Rmd} or \code{md} files be
+#' @param keep_rmd,keep_md Should intermediate \code{Rmd} or \code{md} files be
 #'   kept (\code{TRUE}) or deleted (\code{FALSE})?
 #' @return The path to the output (invisibly).
 #' @section Possible future improvements:
@@ -58,11 +58,11 @@
 #' Moreover, any code in the R script that reads or writes files will use
 #' \code{wd} as the working directory.
 #'
-#' The \code{figDir} argument is relative to the output directory, since the
+#' The \code{fig_dir} argument is relative to the output directory, since the
 #' figures accompanying a markdown file should ideally be placed in the same
-#' directory. It is recommended to either leave \code{figDir} as default or
+#' directory. It is recommended to either leave \code{fig_dir} as default or
 #' set it to a different name but not to a different directory. Because of the
-#' way \code{knitr} works, there are a few known minor issues if \code{figDir}
+#' way \code{knitr} works, there are a few known minor issues if \code{fig_dir}
 #' is set to a different directory.
 #' @export
 #' @examples
@@ -72,23 +72,23 @@
 #'      ezspin("R/script.R")
 #'      ezspin("script.R", wd = "R")
 #'      ezspin("script.R", wd = "R", params = c(id = 10))
-#'      ezspin("script.R", wd = "R", params = c(id = 10), outSuffix = "id-10")
-#'      ezspin("script.R", wd = "R", outDir = "reports")
-#'      ezspin("script.R", wd = "R", outDir = "reports",
-#'               figDir = "figs")
+#'      ezspin("script.R", wd = "R", params = c(id = 10), out_suffix = "id-10")
+#'      ezspin("script.R", wd = "R", out_dir = "reports")
+#'      ezspin("script.R", wd = "R", out_dir = "reports",
+#'               fig_dir = "figs")
 #'   }
 #' }
 #' }
 #' @seealso \code{\link[knitr]{spin}}
 #' @seealso \code{\link[ezknitr]{setup_ezspin_test}}
-ezspin <- function(file, wd, outDir, figDir, outSuffix,
+ezspin <- function(file, wd, out_dir, fig_dir, out_suffix,
                    params = list(),
                    verbose = FALSE,
-                   chunkOpts = list(tidy = FALSE),
-                   keepRmd = FALSE, keepMd = TRUE) {
+                   chunk_opts = list(tidy = FALSE),
+                   keep_rmd = FALSE, keep_md = TRUE) {
   ezknitr_helper(caller = "ezspin",
-                 file = file, wd = wd, outDir = outDir,
-                 figDir = figDir, outSuffix = outSuffix,
-                 params = params, verbose = verbose, chunkOpts = chunkOpts,
-                 keepRmd = keepRmd, keepMd = keepMd)
+                 file = file, wd = wd, out_dir = out_dir,
+                 fig_dir = fig_dir, out_suffix = out_suffix,
+                 params = params, verbose = verbose, chunk_opts = chunk_opts,
+                 keep_rmd = keep_rmd, keep_md = keep_md)
 }
