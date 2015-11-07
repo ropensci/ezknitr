@@ -63,6 +63,19 @@ ezknitr_helper <- function(caller,
          call. = FALSE)
   }
   
+  # Make sure the correct input file is used
+  if (caller == "ezspin") {
+    if (!grepl("(\\.[rR])$", basename(file))) {
+      stop("Wrong input file (`ezspin` expects an R script)",
+           call. = FALSE)
+    }
+  } else if (caller == "ezknit") {
+    if (!grepl("(\\.[rR]md)$", basename(file))) {
+      stop("Wrong input file (`ezknit` expects an Rmarkdown file)",
+           call. = FALSE)
+    }
+  }  
+  
   inputDir <- dirname(file)
   
   # Default output directory is where input is located, otherwise build the path
