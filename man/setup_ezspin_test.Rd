@@ -4,13 +4,7 @@
 \alias{setup_ezspin_test}
 \title{Set up a test directory to experiment with \code{ezspin}}
 \usage{
-setup_ezspin_test(loc = getwd())
-}
-\arguments{
-\item{loc}{The path where you want to set up the test directories.}
-}
-\value{
-The path to the root of the test directory.
+setup_ezspin_test()
 }
 \description{
 This function creates a few directories that try to mimic a real
@@ -26,13 +20,12 @@ how to interact with this test directory.
 \examples{
 \dontrun{
 library(ezknitr)
-tmp <- setup_ezspin_test("~")
-origwd <- setwd(tmp)
-knitr::spin("container/R/ezspin_test.R")
-setup_ezspin_test("..")
-ezspin("R/ezspin_test.R", wd = "container")
-setup_ezspin_test("..")
-ezspin("R/ezspin_test.R", wd = "container",
+setup_ezspin_test()
+knitr::spin("R/ezspin_test.R")
+setup_ezspin_test()
+ezspin("R/ezspin_test.R", wd = "ezknitr_test")
+setup_ezspin_test()
+ezspin("R/ezspin_test.R", wd = "ezknitr_test",
         out_dir = "output", fig_dir = "coolplots")
 setwd(origwd)
 unlink(tmp, recursive = TRUE, force = TRUE)
