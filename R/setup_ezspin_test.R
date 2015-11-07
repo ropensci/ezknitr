@@ -3,7 +3,7 @@
 #' This function creates a few directories that try to mimic a real
 #' data-analysis project structure, and adds a simple R script and a data file.
 #' After setting up these files and directories, you can run both
-#' \code{knitr::spin} and \code{ezrender::ezspin} on the R script to see the
+#' \code{knitr::spin} and \code{ezknitr::ezspin} on the R script to see the
 #' benefits of \code{ezspin}.
 #'
 #' The console output from this function will give more specific insturctions on
@@ -13,7 +13,7 @@
 #' @export
 #' @examples
 #' \dontrun{
-#' library(ezrender)
+#' library(ezknitr)
 #' tmp <- setup_ezspin_test("~")
 #' origwd <- setwd(tmp)
 #' knitr::spin("container/R/ezspin_test.R")
@@ -25,11 +25,11 @@
 #' setwd(origwd)
 #' unlink(tmp, recursive = TRUE, force = TRUE)
 #' }
-#' @seealso \code{\link[ezrender]{ezspin}}
+#' @seealso \code{\link[ezknitr]{ezspin}}
 #' @seealso \code{\link[knitr]{spin}}
 setup_ezspin_test <- function(loc = getwd()) {
   s <- try(
-    system.file("examples", "ezspin_test.R", package = "ezrender", mustWork = TRUE),
+    system.file("examples", "ezspin_test.R", package = "ezknitr", mustWork = TRUE),
     silent = TRUE)
   if (class(s) == "try-error") {
     stop("Could not find example file")
@@ -54,12 +54,12 @@ setup_ezspin_test <- function(loc = getwd()) {
                  "the differences.\n"))
 
   message('   1.   knitr::spin("container/R/ezspin_test.R")')
-  message('   2.   ezrender::ezspin("R/ezspin_test.R", wd = "container")')
-  message('   3.   ezrender::ezspin("R/ezspin_test.R", wd = "container",')
+  message('   2.   ezknitr::ezspin("R/ezspin_test.R", wd = "container")')
+  message('   3.   ezknitr::ezspin("R/ezspin_test.R", wd = "container",')
   message('                        outDir = "output", figDir = "coolplots")')
 
   message(paste0('\nNote: to start with a clean state after each of the above ',
-                 'commands, run `ezrender::setup_ezspin_test("..")` to set up the demo ',
+                 'commands, run `ezknitr::setup_ezspin_test("..")` to set up the demo ',
                  'directories again.'))
 
   invisible(testdir)

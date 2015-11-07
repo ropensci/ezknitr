@@ -1,10 +1,10 @@
-Package: ezrender
+Package: ezknitr
 Title: Render Markdown/HTML Reports from R Without the Typical Pain of Dealing with Working Directories
-Version: 0.0.0.9001
+Version: 0.0.0.9002
 Authors@R: "Dean Attali <daattali@gmail.com> [aut, cre]"
 Description: Render Markdown/HTML Reports from R Without the Typical Pain of
     Dealing with Working Directories.
-URL: https://github.com/daattali/ezrender
+URL: https://github.com/daattali/ezknitr
 Depends:
     R (>= 3.0.2)
 Imports:

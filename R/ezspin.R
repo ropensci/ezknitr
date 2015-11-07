@@ -80,7 +80,7 @@
 #' }
 #' }
 #' @seealso \code{\link[knitr]{spin}}
-#' @seealso \code{\link[ezrender]{setup_ezspin_test}}
+#' @seealso \code{\link[ezknitr]{setup_ezspin_test}}
 ezspin <- function(file, wd, outDir, figDir, outSuffix,
                    params = list(),
                    verbose = FALSE,

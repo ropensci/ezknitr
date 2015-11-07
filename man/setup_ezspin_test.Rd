@@ -16,7 +16,7 @@ The path to the root of the test directory.
 This function creates a few directories that try to mimic a real
 data-analysis project structure, and adds a simple R script and a data file.
 After setting up these files and directories, you can run both
-\code{knitr::spin} and \code{ezrender::ezspin} on the R script to see the
+\code{knitr::spin} and \code{ezknitr::ezspin} on the R script to see the
 benefits of \code{ezspin}.
 }
 \details{
@@ -25,7 +25,7 @@ how to interact with this test directory.
 }
 \examples{
 \dontrun{
-library(ezrender)
+library(ezknitr)
 tmp <- setup_ezspin_test("~")
 origwd <- setwd(tmp)
 knitr::spin("container/R/ezspin_test.R")
@@ -39,7 +39,7 @@ unlink(tmp, recursive = TRUE, force = TRUE)
 }
 }
 \seealso{
-\code{\link[ezrender]{ezspin}}
+\code{\link[ezknitr]{ezspin}}
 
 \code{\link[knitr]{spin}}
 }

@@ -6,8 +6,8 @@ To install, run:
 
 ```
 install.packages("devtools")
-devtools::install_github("daattali/ezrender")
-library(ezrender)
+devtools::install_github("daattali/ezknitr")
+library(ezknitr)
 ```
 
 See the documentation for details `?ezknit` and `?ezspin`
