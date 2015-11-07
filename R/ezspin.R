@@ -44,7 +44,6 @@
 #' For example, if the script to execute assumes that there is a variable named
 #' \code{DATASET_NAME}, then you can use
 #' \code{params = list('DATASET_NAME' = 'oct10dat')}
-#' @param warn If TRUE, then show warnings (recommended to keep this on)
 #' @param keepRmd,keepMd Should intermediate \code{Rmd} or \code{md} files be
 #'   kept (\code{TRUE}) or deleted (\code{FALSE})?
 #' @return The path to the output (invisibly).
@@ -86,14 +85,8 @@ ezspin <- function(file, wd, outDir, figDir, outSuffix,
                    params = list(),
                    verbose = FALSE,
                    chunkOpts = list(tidy = FALSE),
-                   warn = TRUE, keepRmd = FALSE, keepMd = TRUE) {
-  if (warn) {
-    if (!requireNamespace("R.utils", quietly = TRUE)) {
-      warning("`R.utils` package is recommended for this function to work.",
-              call. = FALSE)
-    }
-  }
-
+                   keepRmd = FALSE, keepMd = TRUE) {
+  
   if (missing(outSuffix)) {
     outSuffix <- ""
   } else {

@@ -11,14 +11,7 @@
 ezknit <- function(file, wd, outDir, figDir, outSuffix,
                    params = list(),
                    verbose = FALSE,
-                   chunkOpts = list(tidy = FALSE),
-                   warn = TRUE) {
-  if (warn) {
-    if (!requireNamespace("R.utils", quietly = TRUE)) {
-      warning("`R.utils` package is recommended for this function to work.",
-              call. = FALSE)
-    }
-  }
+                   chunkOpts = list(tidy = FALSE)) {
 
   if (missing(outSuffix)) {
     outSuffix <- ""
