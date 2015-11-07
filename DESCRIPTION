@@ -9,9 +9,9 @@ Depends:
     R (>= 3.0.2)
 Imports:
     knitr (>= 1.7),
-    markdown (>= 0.7)
+    markdown (>= 0.7),
+    R.utils (>= 1.34.0)
 Suggests:
-    R.utils (>= 1.34.0),
     testthat (>= 0.9.1)
 License: MIT + file LICENSE
 LazyData: true

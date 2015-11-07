@@ -11,7 +11,7 @@
 ezknit <- function(file, wd, outDir, figDir, outSuffix,
                    params = list(),
                    verbose = FALSE,
-                   chunkOpts = list(tidy = FALSE, error = FALSE),
+                   chunkOpts = list(tidy = FALSE),
                    warn = TRUE) {
   if (warn) {
     if (!requireNamespace("R.utils", quietly = TRUE)) {
@@ -43,20 +43,20 @@ ezknit <- function(file, wd, outDir, figDir, outSuffix,
   suppressWarnings({
     wd <- normalizePath(wd)
   })
-  if (!isDirectory(wd)) {
+  if (!R.utils::isDirectory(wd)) {
     stop("Invalid `wd` argument. Could not find directory: ", wd,
          call. = FALSE)
   }
 
   # Determine the path fo the input file, either absolute path or relative to wd
-  if (!isAbsolutePath(file)) {
+  if (!R.utils::isAbsolutePath(file)) {
     file <- file.path(wd, file)
   }
   suppressWarnings({
     file <- normalizePath(file)
   })
 
-  if (!isFile(file)) {
+  if (!R.utils::isFile(file)) {
     stop("Invalid `file` argument. Could not find input file: ", file,
          call. = FALSE)
   }
@@ -67,7 +67,7 @@ ezknit <- function(file, wd, outDir, figDir, outSuffix,
   # relative to the working directory
   if (missing(outDir)) {
     outDir <- inputDir
-  } else if(!isAbsolutePath(outDir)) {
+  } else if(!R.utils::isAbsolutePath(outDir)) {
     outDir <- file.path(wd, outDir)
   }
   dir.create(outDir, recursive = TRUE, showWarnings = FALSE)
