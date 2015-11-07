@@ -125,12 +125,6 @@ ezknitr_helper <- function(caller,
   
   # Some folder cleanup when the function exists
   on.exit({
-    # Because of a bug in knitr, the figures directory is created in the
-    # working directory with nothing in it, as well as being created where it
-    # should be and with the right files inside. Delete that folder.
-    fig_dirName <- file.path(dirname(fig_dir), basename(fig_dir))
-    suppressWarnings(unlink(fig_dirName, recursive = TRUE))
-    
     # If no figures are generated, remove the figures folder
     if (length(list.files(fullFigPath)) == 0) {
       suppressWarnings(unlink(fullFigPath, recursive = TRUE))

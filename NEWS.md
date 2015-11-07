@@ -4,6 +4,7 @@
 
 - rename `ezrender` to `ezknitr`
 - many internal changes and code improvements
+- no longer need to delete an empty wrong figures folder because knitr fixed its bug #942 
 
 # ezknitr 0.0.0.9001
 
