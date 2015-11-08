@@ -170,5 +170,7 @@ ezknitr_helper <- function(caller,
   
   message(paste0(caller, " output in\n", out_dir))
   
+  .globals$last_out_dir <- out_dir
+  
   invisible(out_dir)
 }

@@ -1,5 +1,6 @@
 Package: ezknitr
-Title: Render Markdown/HTML Reports from R Without the Typical Pain of Dealing with Working Directories
+Title: Render Markdown/HTML Reports from R Without the Typical Pain of Dealing
+    with Working Directories
 Version: 0.0.0.9002
 Authors@R: "Dean Attali <daattali@gmail.com> [aut, cre]"
 Description: Render Markdown/HTML Reports from R Without the Typical Pain of
@@ -16,3 +17,4 @@ Suggests:
 License: MIT + file LICENSE
 LazyData: true
 VignetteBuilder: knitr
+RoxygenNote: 5.0.0

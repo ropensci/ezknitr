@@ -8,6 +8,7 @@
 #' @return The path to the output (invisibly).
 #' @export
 #' @seealso \code{\link[ezknitr]{ezspin}}
+#' @seealso \code{\link[ezknitr]{open_output_dir}}
 ezknit <- function(file, wd, out_dir, fig_dir, out_suffix,
                    params = list(),
                    verbose = FALSE,

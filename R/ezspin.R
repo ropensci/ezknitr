@@ -67,19 +67,16 @@
 #' @export
 #' @examples
 #' \dontrun{
-#' if (requireNamespace("knitr", quietly = TRUE)) {
-#'   if (requireNamespace("markdown", quietly = TRUE)) {
-#'      ezspin("R/script.R")
-#'      ezspin("script.R", wd = "R")
-#'      ezspin("script.R", wd = "R", params = c(id = 10))
-#'      ezspin("script.R", wd = "R", params = c(id = 10), out_suffix = "id-10")
-#'      ezspin("script.R", wd = "R", out_dir = "reports")
-#'      ezspin("script.R", wd = "R", out_dir = "reports",
-#'               fig_dir = "figs")
-#'   }
-#' }
+#'    ezspin("R/script.R")
+#'    ezspin("script.R", wd = "R")
+#'    ezspin("script.R", wd = "R", params = c(id = 10))
+#'    ezspin("script.R", wd = "R", params = c(id = 10), out_suffix = "id-10")
+#'    ezspin("script.R", wd = "R", out_dir = "reports")
+#'    ezspin("script.R", wd = "R", out_dir = "reports",
+#'           fig_dir = "figs")
 #' }
 #' @seealso \code{\link[knitr]{spin}}
+#' @seealso \code{\link[ezknitr]{open_output_dir}}
 #' @seealso \code{\link[ezknitr]{setup_ezspin_test}}
 ezspin <- function(file, wd, out_dir, fig_dir, out_suffix,
                    params = list(),

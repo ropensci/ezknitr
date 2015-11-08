@@ -8,18 +8,25 @@
 #'
 #' The console output from this function will give more specific insturctions on
 #' how to interact with this test directory.
+#' @return The path to the root of the test directory.
 #' @export
 #' @examples
 #' \dontrun{
 #' library(ezknitr)
+#' 
+#' # setup the test directory structures and run naive spin
 #' setup_ezspin_test()
-#' knitr::spin("R/ezspin_test.R")
+#' knitr::spin("ezknitr_test/R/ezspin_test.R")
+#' file.remove(c("ezspin_test.md", "ezspin_test.html"))
+#' 
+#' # setup the test directory structures and run simple ezspin
 #' setup_ezspin_test()
 #' ezspin("R/ezspin_test.R", wd = "ezknitr_test")
-#' setup_ezspin_test()
+#' 
+#' # setup the test directory structures and run ezspin with more parameters
+#' tmp <- setup_ezspin_test()
 #' ezspin("R/ezspin_test.R", wd = "ezknitr_test",
 #'         out_dir = "output", fig_dir = "coolplots")
-#' setwd(origwd)
 #' unlink(tmp, recursive = TRUE, force = TRUE)
 #' }
 #' @seealso \code{\link[ezknitr]{ezspin}}
@@ -53,4 +60,6 @@ setup_ezspin_test <- function() {
   message('   2.   ezknitr::ezspin("R/ezspin_test.R", wd = "ezknitr_test")')
   message('   3.   ezknitr::ezspin("R/ezspin_test.R", wd = "ezknitr_test",')
   message('                        out_dir = "output", fig_dir = "coolplots")')
+  
+  invisible(testdir)
 }
