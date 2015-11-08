@@ -14,13 +14,13 @@ dotsToChar <- function(...) {
 }
 
 # Main powerhorse function that runs the logic for ezknit and ezspin
-ezknitr_helper <- function(caller,
+ezknitr_helper <- function(type,
                            file, wd, out_dir, fig_dir, out_suffix,
                            params = list(),
                            verbose = FALSE,
                            chunk_opts = list(tidy = FALSE),
                            keep_rmd = FALSE, keep_md = TRUE) {
-  caller <- match.arg(caller, c("ezspin", "ezknit"))
+  type <- match.arg(type, c("ezspin", "ezknit"))
   
   if (missing(out_suffix)) {
     out_suffix <- ""
@@ -64,12 +64,12 @@ ezknitr_helper <- function(caller,
   }
   
   # Make sure the correct input file is used
-  if (caller == "ezspin") {
+  if (type == "ezspin") {
     if (!grepl("(\\.[rR])$", basename(file))) {
       stop("Wrong input file (`ezspin` expects an R script)",
            call. = FALSE)
     }
-  } else if (caller == "ezknit") {
+  } else if (type == "ezknit") {
     if (!grepl("(\\.[rR]md)$", basename(file))) {
       stop("Wrong input file (`ezknit` expects an Rmarkdown file)",
            call. = FALSE)
@@ -89,9 +89,9 @@ ezknitr_helper <- function(caller,
   out_dir <- normalizePath(out_dir)
   
   # Get the filenames for all intermediate files
-  if (caller == "ezspin") {
+  if (type == "ezspin") {
     fileNameOrig <- sub("(\\.[rR])$", "", basename(file))
-  } else if (caller == "ezknit") {
+  } else if (type == "ezknit") {
     fileNameOrig <- sub("(\\.[rR]md)$", "", basename(file))
   }
   fileName <- paste0(fileNameOrig, out_suffix)
@@ -148,27 +148,27 @@ ezknitr_helper <- function(caller,
   
   # This is the guts of this function - take the R script and produce HTML
   # in a few simple steps
-  if (caller == "ezspin") {
+  if (type == "ezspin") {
     knitr::spin(file, format = "Rmd", knit = FALSE)
     file.rename(fileRmdOrig,
                 fileRmd)
-  } else if (caller == "ezknit") {
+  } else if (type == "ezknit") {
     fileRmd <- file
   }
   knitr::knit(fileRmd,
               fileMd,
               quiet = !verbose,
               envir = ezknitr_env)
-  if (caller == "ezspin" && !keep_rmd) {
+  if (type == "ezspin" && !keep_rmd) {
     unlink(fileRmd)
   }
   markdown::markdownToHTML(fileMd,
                            fileHtml)
-  if (caller == "ezspin" && !keep_md) {
+  if (type == "ezspin" && !keep_md) {
     unlink(fileMd)
   }
   
-  message(paste0(caller, " output in\n", out_dir))
+  message(paste0(type, " output in\n", out_dir))
   
   .globals$last_out_dir <- out_dir
   

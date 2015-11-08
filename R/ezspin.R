@@ -83,7 +83,7 @@ ezspin <- function(file, wd, out_dir, fig_dir, out_suffix,
                    verbose = FALSE,
                    chunk_opts = list(tidy = FALSE),
                    keep_rmd = FALSE, keep_md = TRUE) {
-  ezknitr_helper(caller = "ezspin",
+  ezknitr_helper(type = "ezspin",
                  file = file, wd = wd, out_dir = out_dir,
                  fig_dir = fig_dir, out_suffix = out_suffix,
                  params = params, verbose = verbose, chunk_opts = chunk_opts,

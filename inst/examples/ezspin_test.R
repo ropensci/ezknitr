@@ -12,7 +12,7 @@ dat <- scan("data/numbers.txt", quiet = TRUE)
 length(dat)
 #' (If you see errors when using `spin`, that's expected - it's because the
 #' working directory was not what the script assumed.)
-
-#+ noecho, echo = FALSE
+#'
 #' A plot:
+#+ noecho, echo = FALSE
 plot(1:10)

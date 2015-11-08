@@ -13,7 +13,7 @@ ezknit <- function(file, wd, out_dir, fig_dir, out_suffix,
                    params = list(),
                    verbose = FALSE,
                    chunk_opts = list(tidy = FALSE)) {
-  ezknitr_helper(caller = "ezknit",
+  ezknitr_helper(type = "ezknit",
                  file = file, wd = wd, out_dir = out_dir,
                  fig_dir = fig_dir, out_suffix = out_suffix,
                  params = params, verbose = verbose, chunk_opts = chunk_opts)
