@@ -51,5 +51,7 @@ unlink(tmp, recursive = TRUE, force = TRUE)
 \code{\link[ezknitr]{ezknit}}
 
 \code{\link[knitr]{knit}}
+
+\code{\link[ezknitr]{open_output_dir}}
 }
 

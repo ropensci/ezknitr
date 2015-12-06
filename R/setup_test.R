@@ -44,6 +44,7 @@ setup_ezknit_test <- function() {
 #' @seealso \code{\link[knitr]{spin}}
 #' @seealso \code{\link[ezknitr]{ezknit}}
 #' @seealso \code{\link[knitr]{knit}}
+#' @seealso \code{\link[ezknitr]{open_output_dir}}
 #' @name setup_test
 NULL
 
