@@ -3,7 +3,7 @@
 #' \code{ezknitr} is an extension of \code{knitr} that adds flexibility in several
 #' ways. Most importantly, it allows you to have a complex directory structure
 #' and lets you take complete control over where all your inputs are and where
-#' the outputs should go.
+#' the outputs should go. 
 #'
 #' If you've ever written tried using \code{knitr::spin} and got frustrated
 #' with working directories and where input/output files are, then you'll love
