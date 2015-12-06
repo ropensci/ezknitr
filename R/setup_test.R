@@ -41,10 +41,10 @@ setup_ezknit_test <- function() {
 #' unlink(tmp, recursive = TRUE, force = TRUE)
 #' }
 #' @seealso \code{\link[ezknitr]{ezspin}}
-#' @seealso \code{\link[knitr]{spin}}
-#' @seealso \code{\link[ezknitr]{ezknit}}
-#' @seealso \code{\link[knitr]{knit}}
-#' @seealso \code{\link[ezknitr]{open_output_dir}}
+#' \code{\link[knitr]{spin}}
+#' \code{\link[ezknitr]{ezknit}}
+#' \code{\link[knitr]{knit}}
+#' \code{\link[ezknitr]{open_output_dir}}
 #' @name setup_test
 NULL
 

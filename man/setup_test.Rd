@@ -45,13 +45,9 @@ unlink(tmp, recursive = TRUE, force = TRUE)
 }
 \seealso{
 \code{\link[ezknitr]{ezspin}}
-
 \code{\link[knitr]{spin}}
-
 \code{\link[ezknitr]{ezknit}}
-
 \code{\link[knitr]{knit}}
-
 \code{\link[ezknitr]{open_output_dir}}
 }
 

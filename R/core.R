@@ -1,10 +1,9 @@
-#' Create markdown/HTML reports from R script with no hassle
+#' Knit Rmd or spin R files without the typical working directory pain
 #'
-#' This function takes a specially formatted R script and converts it to
-#' markdown and HTML documents.  Regular R markdown is written after the
-#' roxygen comment (\code{#'}), and code chunk options are written after
-#' \code{#+}.  All the pain of dealing with working directories and where
-#' files are generated is taken care of.
+#' \code{ezknitr} is an extension of \code{knitr} that adds flexibility in several
+#' ways. Most importantly, it allows you to have a complex directory structure
+#' and lets you take complete control over where all your inputs are and where
+#' the outputs should go.
 #'
 #' If you've ever written tried using \code{knitr::spin} and got frustrated
 #' with working directories and where input/output files are, then you'll love
@@ -64,7 +63,6 @@
 #' set it to a different name but not to a different directory. Because of the
 #' way \code{knitr} works, there are a few known minor issues if \code{fig_dir}
 #' is set to a different directory.
-#' @export
 #' @examples
 #' \dontrun{
 #'    ezspin("R/script.R")
@@ -75,9 +73,17 @@
 #'    ezspin("script.R", wd = "R", out_dir = "reports",
 #'           fig_dir = "figs")
 #' }
-#' @seealso \code{\link[knitr]{spin}}
 #' @seealso \code{\link[ezknitr]{open_output_dir}}
-#' @seealso \code{\link[ezknitr]{setup_ezspin_test}}
+#' \code{\link[ezknitr]{setup_ezknit_test}}
+#' \code{\link[ezknitr]{setup_ezspin_test}}
+#' \code{\link[ezknitr]{set_default_params}}
+#' \code{\link[knitr]{knit}}
+#' \code{\link[knitr]{spin}}
+#' @name ezknitr_core
+NULL
+
+#' @rdname ezknitr_core
+#' @export
 ezspin <- function(file, wd, out_dir, fig_dir, out_suffix,
                    params = list(),
                    verbose = FALSE,
@@ -90,18 +96,8 @@ ezspin <- function(file, wd, out_dir, fig_dir, out_suffix,
                  keep_rmd = keep_rmd, keep_md = keep_md)
 }
 
-
-#' Create markdown/HTML reports from Rmd files with no hassle
-#'
-#' Similar to \code{\link[ezknitr]{ezspin}}, but works as a replacement
-#' to \code{knitr::knit} instead of \code{knitr::spin}. Read the full
-#' documentation at \code{\link[ezknitr]{ezspin}}.
-#'
-#' @inheritParams ezspin
-#' @return The path to the output (invisibly).
+#' @rdname ezknitr_core
 #' @export
-#' @seealso \code{\link[ezknitr]{ezspin}}
-#' @seealso \code{\link[ezknitr]{open_output_dir}}
 ezknit <- function(file, wd, out_dir, fig_dir, out_suffix,
                    params = list(),
                    verbose = FALSE,
