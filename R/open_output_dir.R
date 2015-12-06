@@ -1,9 +1,9 @@
-#' Open the directory containing the output from the previous ezknitr command
+#' Open the directory containing the output from the last ezknitr command
 #'
-#' Call this function after running an \link[ezknitr]{ezspin} or
-#' \link[ezknitr]{ezknit} command to open the resulting output directory in your
-#' file browser.
-#' @export
+#' Call this function after running \link[ezknitr]{ezspin} or
+#' \link[ezknitr]{ezknit} to open the resulting output directory in your
+#' file browser. This is simply a convenience function so that if you want to
+#' see the results you don't need to navigate to the appropriate folder manually.
 #' @examples
 #' \dontrun{
 #' library(ezknitr)
@@ -11,12 +11,23 @@
 #' ezspin("R/ezspin_test.R", wd = "ezknitr_test")
 #' open_output_dir()
 #' }
+#' @export
 open_output_dir <- function() {
   dir <- .globals$last_out_dir
+  
   if (is.null(dir)) {
-    stop("You need to first run `ezpin` or `ezknit`",
+    stop("You need to first run `ezspin` or `ezknit`",
          call. = FALSE)
   }
+  
+  dir <- normalizePath(dir, mustWork = FALSE)
+  
+  if (!dir.exists(dir)) {
+    stop(paste0("The following directory does not exist anymore: ",
+                dir),
+         call. = FALSE)
+  }
+  
   switch(
     Sys.info()[['sysname']],
     
@@ -46,5 +57,6 @@ open_output_dir <- function() {
   )
   
   shellcmd <- paste0(shellcmd, " ", dir)
+  message(paste0("Opening ", dir))
   suppressWarnings(do.call(rcmd, list(shellcmd)))
 }

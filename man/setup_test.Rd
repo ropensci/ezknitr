@@ -15,11 +15,11 @@ The path to the test directory.
 }
 \description{
 Create a few directories that try to mimic a real
-data-analysis project structure, and adds a data file and a simple R script
+data-analysis project structure, and add a data file and a simple R script
 (for \code{ezspin}) or Rmarkdown file (for \code{ezknit}).\cr\cr
 After setting up these files and directories, you can run \code{ezknitr}
 commands and their equivalent \code{knitr} commands to compare and see the
-benefits of \code{ezknitr}.\cr\cr
+benefits of using \code{ezknitr}.\cr\cr
 More specific instructions on how to interact with this test directory will
 be printed to the console.
 }

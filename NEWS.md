@@ -1,3 +1,10 @@
+# ezknitr 0.1.0
+
+2015-12-05
+
+- add `setup_ezknit_test` function
+- add `open_output_dir` function
+
 # ezknitr 0.0.0.9002
 
 2015-11-06

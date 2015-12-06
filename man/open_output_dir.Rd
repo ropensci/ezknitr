@@ -2,14 +2,15 @@
 % Please edit documentation in R/open_output_dir.R
 \name{open_output_dir}
 \alias{open_output_dir}
-\title{Open the directory containing the output from the previous ezknitr command}
+\title{Open the directory containing the output from the last ezknitr command}
 \usage{
 open_output_dir()
 }
 \description{
-Call this function after running an \link[ezknitr]{ezspin} or
-\link[ezknitr]{ezknit} command to open the resulting output directory in your
-file browser.
+Call this function after running \link[ezknitr]{ezspin} or
+\link[ezknitr]{ezknit} to open the resulting output directory in your
+file browser. This is simply a convenience function so that if you want to
+see the results you don't need to navigate to the appropriate folder manually.
 }
 \examples{
 \dontrun{
