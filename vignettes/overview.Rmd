@@ -56,9 +56,9 @@ If you have a very simple project with a flat directory structure, then `knitr` 
 `ezknitr` improves basic `knitr` functionality in a few ways. You get to decide:
 
 - What the working directory of the source file is
-    - default is your current working directory, which often makes more sense than the the `knitr` assumption that the working directory is wherever the input file is
+    - Default is your current working directory, which often makes more sense than the `knitr` assumption that the working directory is wherever the input file is
 - Where the output files will go
-    - with `knitr`, all the rendered output files will be generated in the same folder as the input
+    - With `knitr`, all the rendered output files will be generated in the folder you're currently in
 - Where the figures generated in the markdown document will be stored
     - `knitr` makes it cumbersome to change this directory
 - Any parameters to pass to the source file
@@ -84,22 +84,24 @@ But what happens if you have a slightly more complex structure? In a real projec
      |- input.csv
 ```
 
-Now if you want `knitr` to work, you'd have to ensure the path to `input.csv` is relative to the `analysis/` directory. This is counter-intuitive because most people expect to create paths relative to the *working directory* (`project/` in this case), but `knitr` will use the `analysis/` folder is the working directory. Any code reading the input file needs to use `../data/input.csv` instead of `data/input.csv`.
+Now if you want `knitr` to work, you'd have to ensure the path to `input.csv` is relative to the `analysis/` directory. This is counter-intuitive because most people expect to create paths relative to the *working directory* (`project/` in this case), but `knitr` will use the `analysis/` folder as the working directory. Any code reading the input file needs to use `../data/input.csv` instead of `data/input.csv`.
 
 Other than being confusing, it also means that you cannot naively run the Rmd code chunks manually because when you run the code in the console, your working directory is not set to what `knitr` will use as the working directory. More specifically, if you try to run the command that reads the input file, your console will look in `project/../data/input.csv` (which doesn't exist).
 
-A similar problem arises when you want to create files from your report: `knitr` will create the files relative to where the Rmd file is, rather than relative to the project root.
+A similar problem arises when you want to create files in your report: `knitr` will create the files relative to where the Rmd file is, rather than relative to the project root.
 
 Another problem with the flat directory structure is that you may want to control where the resulting markdown/HTML reports get generated. `knitr` will create all the outputs in your working directory, and as far as I know there is no way to control that. 
 
-`ezknitr` addresses these issues, and more. It provides wrappers to `knit()` and `spin()` that allows you to set the working directory for the report file, and also uses a more sensible default working directory: the current working directory. `ezknitr` also lets you decide where the output files and output figures will be generated, and uses a better default path for the output files: the directory containing the input file.
+`ezknitr` addresses these issues, and more. It provides wrappers to `knit()` and `spin()` that allow you to set the working directory for the input file, and also uses a more sensible default working directory: the current working directory. `ezknitr` also lets you decide where the output files and output figures will be generated, and uses a better default path for the output files: the directory containing the input file.
 
 Assuming you are currently in the `project/` directory, you could use the following `ezknitr` command to do what you want:
 
 ```
 library(ezknitr)
-ezknit(file = "analysis/report.Rmd", outDir = "reports", figDir = "myfigs")
+ezknit(file = "analysis/report.Rmd", out_dir = "reports", fig_dir = "myfigs")
+```
 
+```
 - project/
   |- analysis/
      |- report.Rmd
@@ -112,11 +114,11 @@ ezknit(file = "analysis/report.Rmd", outDir = "reports", figDir = "myfigs")
      |- report.HTML
 ```
 
-Getting a similar directory structure with `knitr` is not easy, but with `ezknitr` it's trivial.
+After running `ezknit()`, you can run `open_output_dir()` to open the output directory in your file browser if you want to easily see the resulting report. Getting a similar directory structure with `knitr` is not simple, but with `ezknitr` it's trivial.
 
 <h2 id="usecase-advanced">Use case: using one script to analyze multiple datasets</h2>
 
-As an example of a more complex realistic scenario where `ezknitr` would be useful, imagine having multiple analysis scripts, each needing to be run on multiple datasets. Being the organizer scientist that you are, you want to be able to run each analysis on each dataset, and keep the results neatly organized. I personally was involved in a few projects requiring exactly this, and `ezknitr` was in fact born for solving this exact issue. Assume you have the following files in your project:
+As an example of a more complex realistic scenario where `ezknitr` would be useful, imagine having multiple analysis scripts, with each one needing to be run on multiple datasets. Being the organizer scientist that you are, you want to be able to run each analysis on each dataset, and keep the results neatly organized. I personally was involved in a few projects requiring exactly this, and `ezknitr` was in fact born for solving this exact issue. Assume you have the following files in your project:
 
 ```
 - project/
@@ -128,17 +130,19 @@ As an example of a more complex realistic scenario where `ezknitr` would be usef
      |- mouse.dat
 ```
 
-We can easily use `ezknitr` to run any of the analysis Rmarkdowns on any of the datasets and assign the results to a unique output. Let's assume that each analysis script expects there to be a variable named `DATASET_NAME` that tells the script what data to operate on. The following `ezknitr` code illustrates to achieve the desired output.
+We can easily use `ezknitr` to run any of the analysis Rmarkdowns on any of the datasets and assign the results to a unique output. Let's assume that each analysis script expects there to be a variable named `DATASET_NAME` that tells the script what data to operate on. The following `ezknitr` code illustrates how to achieve the desired output.
 
 ```
 library(ezknitr)
-ezknit(file = "analysis/explore.Rmd", outDir = "reports/human",
+ezknit(file = "analysis/explore.Rmd", out_dir = "reports/human",
         params = list("DATASET_NAME" = "human.dat"), keep_html = FALSE)
-ezknit(file = "analysis/explore.Rmd", outDir = "reports/mouse",
+ezknit(file = "analysis/explore.Rmd", out_dir = "reports/mouse",
         params = list("DATASET_NAME" = "mouse.dat"), keep_html = FALSE)
-ezknit(file = "analysis/calculate.Rmd", outDir = "reports/mouse",
+ezknit(file = "analysis/calculate.Rmd", out_dir = "reports/mouse",
         params = list("DATASET_NAME" = "mouse.dat"), keep_html = FALSE)
+```
 
+```
 - project/
   |- analysis/
      |- calculate.Rmd
@@ -154,7 +158,7 @@ ezknit(file = "analysis/calculate.Rmd", outDir = "reports/mouse",
         |- explore.md
 ```
 
-Note that this example uses the `params = list()` argument, which lets you pass variables to the input Rmarkdown.  In this case, I use it to tell the Rmarkdown what dataset to use, and the Rmarkdown assumes a `DATASET_NAME` variable exists. This of course means that the analysis script has an external dependency by having a variable that is not defined inside of it. You can use the `set_default_params()` function inside the Rmarkdown to ensure the variable uses default value if none was provided.
+Note that this example uses the `params = list()` argument, which lets you pass variables to the input Rmarkdown.  In this case, I use it to tell the Rmarkdown what dataset to use, and the Rmarkdown assumes a `DATASET_NAME` variable exists. This of course means that the analysis script has an external dependency by having a variable that is not defined inside of it. You can use the `set_default_params()` function inside the Rmarkdown to ensure the variable uses a default value if none was provided.
 
 Also note that differentiating the species in the output could also have been done using the `out_suffix` argument instead of the `out_dir` argument. For example, using `out_suffix = "human"` would have resulted in an ouput file named `explore-human.md`.
 

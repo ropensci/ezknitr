@@ -1,6 +1,6 @@
 Package: ezknitr
 Title: Avoid the Typical Working Directory Pain When Using 'knitr'
-Version: 0.2.0
+Version: 0.3.0
 Authors@R: "Dean Attali <daattali@gmail.com> [aut, cre]"
 Description: 'ezknitr' is an extension of 'knitr that adds flexibility in several
     ways. One common source of frustration with 'knitr' is that it assumes
@@ -17,7 +17,6 @@ Imports:
     R.utils (>= 1.34.0)
 Suggests: 
     testthat (>= 0.9.1),
-    knitr,
     rmarkdown
 License: MIT + file LICENSE
 LazyData: true
