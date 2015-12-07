@@ -4,7 +4,7 @@
 
 * Windows 7, R 3.2.2 (local)
 * ubuntu 12.04, R 3.2.2 (on travis-ci)
-* ubuntu 14.04, R 3.1.3 (on my DigitalOcean droplet)
+* ubuntu 14.04, R 3.2.1 (on my DigitalOcean droplet)
 
 ## Submission comments
 
