@@ -1,3 +1,9 @@
+# ezknitr 0.3.0
+
+2015-12-07
+
+- add section about `rmarkdown::render` in vignette/readme
+
 # ezknitr 0.2.0
 
 2015-12-07

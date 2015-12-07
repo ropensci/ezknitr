@@ -30,7 +30,8 @@ Table of contents
 -   [Use case: using one script to analyze multiple
     datasets](#usecase-advanced)
 -   [Experiment with ezknitr](#experiment)
--   [spin vs knit](#spin-vs-knit)
+-   [spin() vs knit()](#spin-vs-knit)
+-   [Using rmarkdown::render()](#using-render)
 
 <h2 id="installation">
 Installation
@@ -214,7 +215,7 @@ the `setup_ezknit_test()` or `setup_ezspin_test()` functions to see
 their benefits. See `?setup_ezknit_test` for more information.
 
 <h2 id="spin-vs-knit">
-spin vs knit
+spin() vs knit()
 </h2>
 `knit()` is the most popular and well-known function from `knitr`. It
 lets you create a markdown/HTML document from an Rmarkdown file. I
@@ -229,3 +230,16 @@ able to produce reports from it directly instead of having to copy
 chunks into a separate Rmarkdown file. You can read more about why I
 like `spin()` in the blog post [knitr's best hidden gem:
 spin](http://deanattali.com/2015/03/24/knitrs-best-hidden-gem-spin/).
+
+<h2 id="using-render">
+Using rmarkdown::render()
+</h2>
+When the core of this package was developed, none of the functionality
+was supported in any way by either `knitr` or `rmarkdown`. Over the
+time, `rmarkdown::render()` got some new features that are very similar
+to features of `ezknitr`. Native support for parameters inside Rmarkdown
+files using YAML is a big feature which makes the use of
+`set_default_params()` and the `params` argument of `ezknitr` less
+important However, the core problem that `ezknitr` wants to solve is the
+working directory issue, and this issue has yet to be addressed by
+`rmarkdown` or `knitr`, which makes `ezknitr` still useful.
