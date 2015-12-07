@@ -1,20 +1,24 @@
 Package: ezknitr
 Title: Avoid the Typical Working Directory Pain When Using 'knitr'
-Version: 0.1.0
+Version: 0.2.0
 Authors@R: "Dean Attali <daattali@gmail.com> [aut, cre]"
-Description: 'ezknitr' is an extension of 'knitr' that adds flexibility in 
-    several ways. Most importantly, it allows you to have a complex directory 
-    structureand lets you take complete control over where all your inputs are 
-    and where the outputs should go.
+Description: 'ezknitr' is an extension of 'knitr that adds flexibility in several
+    ways. One common source of frustration with 'knitr' is that it assumes
+    the directory where the source file lives should be the working directory,
+    which is often not true. 'ezknitr' addresses this problem by giving you
+    complete control over where all the inputs and outputs are, and adds several
+    other convenient features to make rendering markdown/HTML documents easier.
 URL: https://github.com/daattali/ezknitr
-Depends:
+Depends: 
     R (>= 3.0.2)
-Imports:
+Imports: 
     knitr (>= 1.7),
     markdown (>= 0.7),
     R.utils (>= 1.34.0)
-Suggests:
-    testthat (>= 0.9.1)
+Suggests: 
+    testthat (>= 0.9.1),
+    knitr,
+    rmarkdown
 License: MIT + file LICENSE
 LazyData: true
 VignetteBuilder: knitr
