@@ -114,9 +114,9 @@ A similar problem arises when you want to create files in your report:
 than relative to the project root.
 
 Another problem with the flat directory structure is that you may want
-to control where the resulting markdown/HTML reports get generated.
-`knitr` will create all the outputs in your working directory, and as
-far as I know there is no way to control that.
+to control where the resulting reports get generated. `knitr` will
+create all the outputs in your working directory, and as far as I know
+there is no way to control that.
 
 `ezknitr` addresses these issues, and more. It provides wrappers to
 `knit()` and `spin()` that allow you to set the working directory for
@@ -147,6 +147,10 @@ After running `ezknit()`, you can run `open_output_dir()` to open the
 output directory in your file browser if you want to easily see the
 resulting report. Getting a similar directory structure with `knitr` is
 not simple, but with `ezknitr` it's trivial.
+
+Note that `ezknitr` produces both a markdown and an HTML file for each
+report (you can choose to discard them with the `keep_md` and
+`keep_html` arguments).
 
 <h2 id="usecase-advanced">
 Use case: using one script to analyze multiple datasets
@@ -221,13 +225,13 @@ their benefits. See `?setup_ezknit_test` for more information.
 spin() vs knit()
 </h2>
 `knit()` is the most popular and well-known function from `knitr`. It
-lets you create a markdown/HTML document from an Rmarkdown file. I
-assume if you are on this page, you are familiar with `knit()` and
-Rmarkdown, so I won't explain it any further.
+lets you create a markdown document from an Rmarkdown file. I assume if
+you are on this page, you are familiar with `knit()` and Rmarkdown, so I
+won't explain it any further.
 
 `spin()` is similar, but starts one step further back: it takes an R
-script as input, creatd an Rmarkdown document from the R script, and
-then proceeds to create markdown/HTML documents from it. `spin()` can be
+script as input, creates an Rmarkdown document from the R script, and
+then proceeds to create a markdown document from it. `spin()` can be
 useful in situations where you develop a large R script and want to be
 able to produce reports from it directly instead of having to copy
 chunks into a separate Rmarkdown file. You can read more about why I
@@ -237,12 +241,12 @@ spin](http://deanattali.com/2015/03/24/knitrs-best-hidden-gem-spin/).
 <h2 id="using-render">
 Using rmarkdown::render()
 </h2>
-When the core of this package was developed, none of the functionality
-was supported in any way by either `knitr` or `rmarkdown`. Over the
-time, `rmarkdown::render()` got some new features that are very similar
-to features of `ezknitr`. Native support for parameters inside Rmarkdown
+When the core of this package was developed, none of its functionality
+was supported in any way by either `knitr` or `rmarkdown`. Over time,
+`rmarkdown::render()` got some new features that are very similar to
+features of `ezknitr`. Native support for parameters inside Rmarkdown
 files using YAML is a big feature which makes the use of
 `set_default_params()` and the `params` argument of `ezknitr` less
-important However, the core problem that `ezknitr` wants to solve is the
-working directory issue, and this issue has yet to be addressed by
+important. However, the core problem that `ezknitr` wants to solve is
+the working directory issue, and this issue has yet to be addressed by
 `rmarkdown` or `knitr`, which makes `ezknitr` still useful.
