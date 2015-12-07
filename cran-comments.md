@@ -1,0 +1,19 @@
+# Round 1
+
+## Test environments
+
+* Windows 7, R 3.2.2 (local)
+* ubuntu 12.04, R 3.2.2 (on travis-ci)
+* ubuntu 14.04, R 3.1.3 (on my DigitalOcean droplet)
+
+## Submission comments
+
+2015-12-07
+
+R CMD check has no ERRORs or WARNINGs, and 1 NOTE regarding an invalid URL pointing to the CRAN URL of this package. That's expected because this package is not yet on CRAN, but the URL will be valid once it is on CRAN.
+  
+
+## Reviewer comments
+
+
+
