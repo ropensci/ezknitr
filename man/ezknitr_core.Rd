@@ -4,81 +4,81 @@
 \alias{ezknit}
 \alias{ezknitr_core}
 \alias{ezspin}
-\title{Knit Rmd or spin R files without the typical working directory pain}
+\title{Knit Rmd or spin R files without the typical pain of working directories}
 \usage{
 ezspin(file, wd, out_dir, fig_dir, out_suffix, params = list(),
   verbose = FALSE, chunk_opts = list(tidy = FALSE), keep_rmd = FALSE,
-  keep_md = TRUE)
+  keep_md = TRUE, keep_html = TRUE)
 
 ezknit(file, wd, out_dir, fig_dir, out_suffix, params = list(),
-  verbose = FALSE, chunk_opts = list(tidy = FALSE))
+  verbose = FALSE, chunk_opts = list(tidy = FALSE), keep_md = TRUE,
+  keep_html = TRUE)
 }
 \arguments{
-\item{file}{The path to the R script (if \code{wd} is provided, then this
-path is relative to \code{wd}).}
+\item{file}{The path to the input file (.Rmd file if using \code{ezknit} or 
+.R script if using \code{ezspin}). If \code{wd} is provided, then this path is 
+relative to \code{wd}.}
 
-\item{wd}{The working directory to be used in the R script. See 'Detailed:
-Arguments'.}
+\item{wd}{The working directory to be used in the Rmd/R script. Defaults to
+the current working directory (note that this is not the same behaviour as
+\code{knitr}). See the 'Detailed Arguments' section for more details.}
 
-\item{out_dir}{The output directory (if \code{wd} is provided, then this path
-is relative to \code{wd}). Defaults to the directory containing the R script.}
+\item{out_dir}{The output directory for the rendered markdown or HTML files
+(if \code{wd} is provided, then this path is relative to \code{wd}).
+Defaults to the directory containing the input file.}
 
-\item{fig_dir}{The name (or path) of the directory containing the figures
-generated for the markdown document. See 'Detailed Arguments'.}
+\item{fig_dir}{The name (or path) of the directory where figures should
+be generated. See the 'Detailed Arguments' section for more details.}
 
-\item{out_suffix}{A suffix to add to the output files, can be used to
+\item{out_suffix}{A suffix to add to the output files. Can be used to
 differentiate outputs from runs with different parameters. The name of the
-output files is the name of the input script appended by \code{out_suffix},
+output files is the name of the input file appended by \code{out_suffix},
 separated by a dash.}
 
-\item{params}{A named list of parameters to be passed on to the R script.
-For example, if the script to execute assumes that there is a variable named
-\code{DATASET_NAME}, then you can use
-\code{params = list('DATASET_NAME' = 'oct10dat')}}
+\item{params}{A named list of parameters to be passed to use in the input
+Rmd/R file. For example, if the script to execute assumes that there is a
+variable named \code{DATASET_NAME}, then you can use
+\code{params = list('DATASET_NAME' = 'oct10dat')}.}
 
 \item{verbose}{If TRUE, then show the progress of knitting the document.}
 
-\item{chunk_opts}{List of chunk options to use. See \code{?knitr::opts_chunk}
-for a list of chunk options.}
+\item{chunk_opts}{List of knitr chunk options to use. See 
+\code{?knitr::opts_chunk} for a list of available chunk options.}
 
 \item{keep_rmd, keep_md}{Should intermediate \code{Rmd} or \code{md} files be
 kept (\code{TRUE}) or deleted (\code{FALSE})?}
+
+\item{keep_html}{Should the final \code{html} file be kept (\code{TRUE})
+or deleted (\code{FALSE})?}
 }
 \value{
-The path to the output (invisibly).
+The path to the output directory (invisibly).
 }
 \description{
 \code{ezknitr} is an extension of \code{knitr} that adds flexibility in several
-ways. Most importantly, it allows you to have a complex directory structure
-and lets you take complete control over where all your inputs are and where
-the outputs should go.
+ways. One common source of frustration with \code{knitr} is that it assumes
+the directory where the source file lives should be the working directory,
+which is often not true. \code{ezknitr} addresses this problem by giving you
+complete control over where all the inputs and outputs are, and adds several
+other convenient features. The two main functions are \code{ezknit} and 
+\code{ezspin}, which are wrappers around \code{knitr}'s \code{knit} and
+\code{spin}, used to make rendering markdown/HTML documents easier.
 }
 \details{
-If you've ever written tried using \code{knitr::spin} and got frustrated
-with working directories and where input/output files are, then you'll love
-\code{ezspin}! \code{knitr::spin} is great and easy when all you need to do
-is convert an R script to a markdown/HTML and everything lives in the same
-directory.  But if you have a real directory structure, this is rarely the
-case, and \code{ezspin} is the solution.  Even something as simple as
-using \code{knitr::spin} on a script that reads a file in a different
-directory cannot be easily done in a way that allows both running the script
-directly and using \code{spin} on it.
+If you have a very simple project with a flat directory structure, then
+\code{knitr} works great. But even something as simple as trying to knit a 
+document that reads a file from a different directory or placing the output 
+rendered files in a different folder cannot be easily done with \code{knitr}.
 
-\code{ezspin} improves basic \code{spin} in a few ways. You get to decide:
-
-- What the working directory of the R script is
-
-- Where the output files will go
-
-- Where the figures used in the markdown will go
-
-- If there are any parameters to pass to the R script
+\code{ezknitr} improves basic \code{knitr} functionality in a few ways.
+You get to decide:
+\itemize{
+  \item What the working directory of the source file is
+  \item Where the output files will go
+  \item Where the figures used in the markdown will go
+  \item Any parameters to pass to the source file
 }
-\section{Possible future improvements}{
-
-- Add support to avoid producing the HTML file
 }
-
 \section{Detailed Arguments}{
 
 All paths given in the arguments can be either absolute or relative.
@@ -90,21 +90,39 @@ Moreover, any code in the R script that reads or writes files will use
 \code{wd} as the working directory.
 
 The \code{fig_dir} argument is relative to the output directory, since the
-figures accompanying a markdown file should ideally be placed in the same
+figures accompanying a markdown file should be placed in the same
 directory. It is recommended to either leave \code{fig_dir} as default or
 set it to a different name but not to a different directory. Because of the
 way \code{knitr} works, there are a few known minor issues if \code{fig_dir}
 is set to a different directory.
 }
+
+\section{Difference between ezknit and ezspin}{
+
+\code{ezknit} is a wrapper around \code{knitr::knit} while \code{ezspin}
+is a wrapper around \code{ezspin}. The two functions are very similar.
+\code{knit} is the more popular and well-known function. It is used
+ to render a markdown/HTML document from an Rmarkdown source. 
+\code{spin} takes an R script as its input, produces an
+Rmarkdown document from the R script, and then calls \code{knit} on it.
+}
 \examples{
 \dontrun{
-   ezspin("R/script.R")
-   ezspin("script.R", wd = "R")
-   ezspin("script.R", wd = "R", params = c(id = 10))
-   ezspin("script.R", wd = "R", params = c(id = 10), out_suffix = "id-10")
-   ezspin("script.R", wd = "R", out_dir = "reports")
-   ezspin("script.R", wd = "R", out_dir = "reports",
-          fig_dir = "figs")
+   tmp <- setup_ezknit_test()
+   ezknit("R/ezknit_test.Rmd", wd = "ezknitr_test")
+   ezknit("R/ezknit_test.Rmd", wd = "ezknitr_test",
+          out_dir = "output", fig_dir = "coolplots",
+          params = list(numPoints = 50))
+   open_output_dir()
+   unlink(tmp, recursive = TRUE, force = TRUE)
+ 
+   tmp <- setup_ezspin_test()
+   ezspin("R/ezspin_test.R", wd = "ezknitr_test")
+   ezspin("R/ezspin_test.R", wd = "ezknitr_test",
+          out_dir = "output", fig_dir = "coolplots",
+          params = list(numPoints = 50), keep_rmd = TRUE)
+   open_output_dir()
+   unlink(tmp, recursive = TRUE, force = TRUE)
 }
 }
 \seealso{

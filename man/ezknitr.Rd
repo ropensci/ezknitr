@@ -10,8 +10,10 @@ Avoid the Typical Working Directory Pain When Using 'knitr'
 }
 \details{
 \code{ezknitr} is an extension of \code{knitr} that adds flexibility in several
-ways. Most importantly, it allows you to have a complex directory structure
-and lets you take complete control over where all your inputs are and where
-the outputs should go.
+ways. One common source of frustration with \code{knitr} is that it assumes
+the directory where the source file lives should be the working directory,
+which is often not true. \code{ezknitr} addresses this problem by giving you
+complete control over where all the inputs and outputs are, and adds several
+other convenient features to make rendering markdown/HTML documents easier.
 }
 
