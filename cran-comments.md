@@ -15,5 +15,10 @@ R CMD check has no ERRORs or WARNINGs, and 1 NOTE regarding an invalid URL point
 
 ## Reviewer comments
 
+2015-12-08 Kurt Hornik
 
+Thanks, on CRAN now.
 
+Best
+
+-k
