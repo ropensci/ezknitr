@@ -3,7 +3,7 @@ Title: Avoid the Typical Working Directory Pain When Using 'knitr'
 Version: 0.3.0
 Authors@R: person("Dean", "Attali", email = "daattali@gmail.com",
     role = c("aut", "cre"))
-Description: 'ezknitr' is an extension of 'knitr that adds flexibility in several
+Description: An extension of 'knitr' that adds flexibility in several
     ways. One common source of frustration with 'knitr' is that it assumes
     the directory where the source file lives should be the working directory,
     which is often not true. 'ezknitr' addresses this problem by giving you
