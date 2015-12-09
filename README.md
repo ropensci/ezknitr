@@ -7,13 +7,15 @@ Status](https://travis-ci.org/daattali/ezknitr.svg?branch=master)](https://travi
 version](http://www.r-pkg.org/badges/version/ezknitr)](https://cran.r-project.org/package=ezknitr)
 
 `ezknitr` is an extension of `knitr` that adds flexibility in several
-ways. One common source of frustration with `knitr` is that it assumes
-the directory where the source file lives should be the working
-directory, which is often not true. `ezknitr` addresses this problem by
-giving you complete control over where all the inputs and outputs are,
-and adds several other convenient features. The two main functions are
-`ezknit()` and `ezspin()`, which are wrappers around `knitr`'s `knit()`
-and `spin()`, used to make rendering markdown/HTML documents easier.
+ways.
+
+One common source of frustration with `knitr` is that it assumes the
+directory where the source file lives should be the working directory,
+which is often not true. `ezknitr` addresses this problem by giving you
+complete control over where all the inputs and outputs are, and adds
+several other convenient features. The two main functions are `ezknit()`
+and `ezspin()`, which are wrappers around `knitr`'s `knit()` and
+`spin()`, used to make rendering markdown/HTML documents easier.
 
 > You can see Jenny Bryan's way of dealing with this problem [in this
 > gist](https://gist.github.com/jennybc/362f52446fe1ebc4c49f) or simply
@@ -126,8 +128,9 @@ output files and output figures will be generated, and uses a better
 default path for the output files: the directory containing the input
 file.
 
-Assuming you are currently in the `project/` directory, you could use
-the following `ezknitr` command to do what you want:
+Assuming your working directory is currently set to the `project/`
+directory, you could use the following `ezknitr` command to do what you
+want:
 
     library(ezknitr)
     ezknit(file = "analysis/report.Rmd", out_dir = "reports", fig_dir = "myfigs")
@@ -143,10 +146,12 @@ the following `ezknitr` command to do what you want:
          |- report.md
          |- report.HTML
 
-After running `ezknit()`, you can run `open_output_dir()` to open the
-output directory in your file browser if you want to easily see the
-resulting report. Getting a similar directory structure with `knitr` is
-not simple, but with `ezknitr` it's trivial.
+We didn't explicitly have to set the working direcory, but you can use
+the `wd` argument if you do require a different directory. After running
+`ezknit()`, you can run `open_output_dir()` to open the output directory
+in your file browser if you want to easily see the resulting report.
+Getting a similar directory structure with `knitr` is not simple, but
+with `ezknitr` it's trivial.
 
 Note that `ezknitr` produces both a markdown and an HTML file for each
 report (you can choose to discard them with the `keep_md` and
@@ -235,8 +240,8 @@ then proceeds to create a markdown document from it. `spin()` can be
 useful in situations where you develop a large R script and want to be
 able to produce reports from it directly instead of having to copy
 chunks into a separate Rmarkdown file. You can read more about why I
-like `spin()` in the blog post [knitr's best hidden gem:
-spin](http://deanattali.com/2015/03/24/knitrs-best-hidden-gem-spin/).
+like `spin()` in the blog post ["knitr's best hidden gem:
+spin"](http://deanattali.com/2015/03/24/knitrs-best-hidden-gem-spin/).
 
 <h2 id="using-render">
 Using rmarkdown::render()
