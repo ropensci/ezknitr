@@ -1,6 +1,6 @@
 Package: ezknitr
 Title: Avoid the Typical Working Directory Pain When Using 'knitr'
-Version: 0.3.0
+Version: 0.3.1
 Authors@R: person("Dean", "Attali", email = "daattali@gmail.com",
     role = c("aut", "cre"))
 Description: An extension of 'knitr' that adds flexibility in several
@@ -21,6 +21,7 @@ Suggests:
     testthat (>= 0.9.1),
     rmarkdown
 License: MIT + file LICENSE
+SystemRequirements: pandoc with https support
 LazyData: true
 VignetteBuilder: knitr
 RoxygenNote: 5.0.1
