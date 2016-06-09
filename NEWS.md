@@ -1,3 +1,7 @@
+# ezknitr 0.4 2016-06-09
+
+- added `...` argument to `ezspin` that passes any additional arguments to `knitr::spin` (#6)
+
 # ezknitr 0.3.0
 
 2015-12-07

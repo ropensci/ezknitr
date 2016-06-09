@@ -8,7 +8,7 @@
 \usage{
 ezspin(file, wd, out_dir, fig_dir, out_suffix, params = list(),
   verbose = FALSE, chunk_opts = list(tidy = FALSE), keep_rmd = FALSE,
-  keep_md = TRUE, keep_html = TRUE)
+  keep_md = TRUE, keep_html = TRUE, ...)
 
 ezknit(file, wd, out_dir, fig_dir, out_suffix, params = list(),
   verbose = FALSE, chunk_opts = list(tidy = FALSE), keep_md = TRUE,
@@ -50,6 +50,8 @@ kept (\code{TRUE}) or deleted (\code{FALSE})?}
 
 \item{keep_html}{Should the final \code{html} file be kept (\code{TRUE})
 or deleted (\code{FALSE})?}
+
+\item{...}{Any extra parameters that should be passed to \code{knitr::spin}.}
 }
 \value{
 The path to the output directory (invisibly).
