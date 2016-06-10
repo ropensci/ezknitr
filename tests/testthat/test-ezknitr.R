@@ -45,7 +45,7 @@ test_that("ezspin creates the correct files", {
          out_dir = "output", fig_dir = "coolplots", keep_rmd = TRUE)
   files <- c(
     file.path(tmp, "R", "ezspin_test.R"),
-    file.path(tmp, "output", "ezspin_test.Rmd"),
+    file.path(tmp, "R", "ezspin_test.Rmd"),
     file.path(tmp, "output", "ezspin_test.md"),
     file.path(tmp, "output", "ezspin_test.html"),
     file.path(tmp, "output", "coolplots", "plot-1.png"),
