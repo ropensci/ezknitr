@@ -273,8 +273,7 @@ ezknitr_helper <- function(type,
   # in a few simple steps
   if (type == "ezspin") {
     knitr::spin(file, format = "Rmd", knit = FALSE, ...)
-    file.rename(fileRmdOrig,
-                fileRmd)
+    fileRmd <- fileRmdOrig
   } else if (type == "ezknit") {
     fileRmd <- file
   }
