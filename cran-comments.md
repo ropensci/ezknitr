@@ -22,3 +22,19 @@ Thanks, on CRAN now.
 Best
 
 -k
+
+
+---
+
+# v0.4
+
+# Round 1
+
+## Submission comments
+
+2016-06-12
+
+R CMD check ran without any errors, warnings, or notes
+  
+
+## Reviewer comments
