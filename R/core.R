@@ -49,7 +49,7 @@
 #' @param keep_html Should the final \code{html} file be kept (\code{TRUE})
 #' or deleted (\code{FALSE})?
 #' @param move_intermediate_file Should the intermediate \code{Rmd} file be
-#' moved to the destination folder (\code{TRUE}) or stay in the same folder as
+#' moved to the output folder (\code{TRUE}) or stay in the same folder as
 #' the source \code{R} file (\code{FALSE})?
 #' @param ... Any extra parameters that should be passed to \code{knitr::spin}.
 #'   
@@ -147,7 +147,7 @@ ezknitr_helper <- function(type,
                            verbose = FALSE,
                            chunk_opts = list(tidy = FALSE),
                            keep_rmd, keep_md, keep_html,
-                           move_intermediate_file = TRUE,
+                           move_intermediate_file,
                            ...) {
   type <- match.arg(type, c("ezspin", "ezknit"))
   

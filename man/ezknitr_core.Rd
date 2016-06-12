@@ -52,7 +52,7 @@ kept (\code{TRUE}) or deleted (\code{FALSE})?}
 or deleted (\code{FALSE})?}
 
 \item{move_intermediate_file}{Should the intermediate \code{Rmd} file be
-moved to the destination folder (\code{TRUE}) or stay in the same folder as
+moved to the output folder (\code{TRUE}) or stay in the same folder as
 the source \code{R} file (\code{FALSE})?}
 
 \item{...}{Any extra parameters that should be passed to \code{knitr::spin}.}

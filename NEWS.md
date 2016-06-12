@@ -1,6 +1,7 @@
-# ezknitr 0.4 2016-06-09
+# ezknitr 0.4 2016-06-12
 
 - added `...` argument to `ezspin` that passes any additional arguments to `knitr::spin` (#6)
+- add param `move_intermediate_file` to `ezspin` that controls whether the intermediate Rmd file stays with the source R script or moves to the output folder (thanks @klmr)  
 
 # ezknitr 0.3.0
 
