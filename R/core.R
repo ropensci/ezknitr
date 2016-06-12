@@ -110,12 +110,14 @@ ezspin <- function(file, wd, out_dir, fig_dir, out_suffix,
                    verbose = FALSE,
                    chunk_opts = list(tidy = FALSE),
                    keep_rmd = FALSE, keep_md = TRUE, keep_html = TRUE,
+                   move_intermediate_file = TRUE,
                    ...) {
   ezknitr_helper(type = "ezspin",
                  file = file, wd = wd, out_dir = out_dir,
                  fig_dir = fig_dir, out_suffix = out_suffix,
                  params = params, verbose = verbose, chunk_opts = chunk_opts,
                  keep_rmd = keep_rmd, keep_md = keep_md, keep_html = keep_html,
+                 move_intermediate_file = move_intermediate_file,
                  ...)
 }
 
@@ -142,6 +144,7 @@ ezknitr_helper <- function(type,
                            verbose = FALSE,
                            chunk_opts = list(tidy = FALSE),
                            keep_rmd, keep_md, keep_html,
+                           move_intermediate_file = TRUE,
                            ...) {
   type <- match.arg(type, c("ezspin", "ezknit"))
   
@@ -273,7 +276,12 @@ ezknitr_helper <- function(type,
   # in a few simple steps
   if (type == "ezspin") {
     knitr::spin(file, format = "Rmd", knit = FALSE, ...)
-    fileRmd <- fileRmdOrig
+    if (move_intermediate_file) {
+      file.rename(fileRmdOrig,
+                  fileRmd)
+    } else {
+      fileRmd <- fileRmdOrig
+    }
   } else if (type == "ezknit") {
     fileRmd <- file
   }
