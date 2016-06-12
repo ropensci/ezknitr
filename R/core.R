@@ -48,6 +48,9 @@
 #' kept (\code{TRUE}) or deleted (\code{FALSE})?
 #' @param keep_html Should the final \code{html} file be kept (\code{TRUE})
 #' or deleted (\code{FALSE})?
+#' @param move_intermediate_file Should the intermediate \code{Rmd} file be
+#' moved to the destination folder (\code{TRUE}) or stay in the same folder as
+#' the source \code{R} file (\code{FALSE})?
 #' @param ... Any extra parameters that should be passed to \code{knitr::spin}.
 #'   
 #' @return The path to the output directory (invisibly).
