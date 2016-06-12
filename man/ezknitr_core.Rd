@@ -8,7 +8,7 @@
 \usage{
 ezspin(file, wd, out_dir, fig_dir, out_suffix, params = list(),
   verbose = FALSE, chunk_opts = list(tidy = FALSE), keep_rmd = FALSE,
-  keep_md = TRUE, keep_html = TRUE, ...)
+  keep_md = TRUE, keep_html = TRUE, move_intermediate_file = TRUE, ...)
 
 ezknit(file, wd, out_dir, fig_dir, out_suffix, params = list(),
   verbose = FALSE, chunk_opts = list(tidy = FALSE), keep_md = TRUE,
@@ -50,6 +50,10 @@ kept (\code{TRUE}) or deleted (\code{FALSE})?}
 
 \item{keep_html}{Should the final \code{html} file be kept (\code{TRUE})
 or deleted (\code{FALSE})?}
+
+\item{move_intermediate_file}{Should the intermediate \code{Rmd} file be
+moved to the destination folder (\code{TRUE}) or stay in the same folder as
+the source \code{R} file (\code{FALSE})?}
 
 \item{...}{Any extra parameters that should be passed to \code{knitr::spin}.}
 }

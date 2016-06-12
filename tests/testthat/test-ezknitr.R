@@ -52,5 +52,20 @@ test_that("ezspin creates the correct files", {
     file.path(tmp, "data", "numbers.txt")
   )
   expect_true(all(file.exists(files)))
+  unlink(tmp, recursive = TRUE, force = TRUE)
+  
+  tmp <- setup_ezspin_test()
+  ezspin("R/ezspin_test.R", wd = "ezknitr_test",
+         out_dir = "output", fig_dir = "coolplots", keep_rmd = TRUE,
+         move_intermediate_file = FALSE)
+  files <- c(
+    file.path(tmp, "R", "ezspin_test.R"),
+    file.path(tmp, "R", "ezspin_test.Rmd"),
+    file.path(tmp, "output", "ezspin_test.md"),
+    file.path(tmp, "output", "ezspin_test.html"),
+    file.path(tmp, "output", "coolplots", "plot-1.png"),
+    file.path(tmp, "data", "numbers.txt")
+  )
+  expect_true(all(file.exists(files)))
   unlink(tmp, recursive = TRUE, force = TRUE)  
 })
