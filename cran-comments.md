@@ -38,3 +38,7 @@ R CMD check ran without any errors, warnings, or notes
   
 
 ## Reviewer comments
+
+2016-06-12 Uwe Ligges
+
+Thanks, on CRAN now.
