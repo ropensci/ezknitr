@@ -1,3 +1,7 @@
+# ezknitr 0.4.9000 2016-08-07
+
+- added JOSS paper
+
 # ezknitr 0.4 2016-06-12
 
 - added `...` argument to `ezspin` that passes any additional arguments to `knitr::spin` (#6)
