@@ -6,6 +6,9 @@ Status](https://travis-ci.org/daattali/ezknitr.svg?branch=master)](https://travi
 [![CRAN
 version](http://www.r-pkg.org/badges/version/ezknitr)](https://cran.r-project.org/package=ezknitr)
 
+> *Copyright 2016 [Dean Attali](http://deanattali.com). Licensed under
+> the MIT license.*
+
 `ezknitr` is an extension of `knitr` that adds flexibility in several
 ways.
 
@@ -16,12 +19,6 @@ complete control over where all the inputs and outputs are, and adds
 several other convenient features. The two main functions are `ezknit()`
 and `ezspin()`, which are wrappers around `knitr`'s `knit()` and
 `spin()`, used to make rendering markdown/HTML documents easier.
-
-> You can see Jenny Bryan's way of dealing with this problem [in this
-> gist](https://gist.github.com/jennybc/362f52446fe1ebc4c49f) or simply
-> browse the [knitr GitHub
-> issues](https://github.com/yihui/knitr/issues) to see people
-> discussing the issue surrounding directories.
 
 Table of contents
 -----------------
