@@ -217,7 +217,7 @@ ezknitr_helper <- function(type,
   dir.create(out_dir, recursive = TRUE, showWarnings = FALSE)
   out_dir <- normalizePath(out_dir)
   
-  # Get the file_names for all intermediate files
+  # Get the file names for all intermediate files
   if (type == "ezspin") {
     file_name_orig <- sub("(\\.[rR])$", "", basename(file))
   } else if (type == "ezknit") {
