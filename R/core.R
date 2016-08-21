@@ -205,32 +205,32 @@ ezknitr_helper <- function(type,
     }
   }  
   
-  inputDir <- dirname(file)
+  input_dir <- dirname(file)
   
   # Default output directory is where input is located, otherwise build the path
   # relative to the working directory
   if (missing(out_dir)) {
-    out_dir <- inputDir
+    out_dir <- input_dir
   } else if(!R.utils::isAbsolutePath(out_dir)) {
     out_dir <- file.path(wd, out_dir)
   }
   dir.create(out_dir, recursive = TRUE, showWarnings = FALSE)
   out_dir <- normalizePath(out_dir)
   
-  # Get the filenames for all intermediate files
+  # Get the file_names for all intermediate files
   if (type == "ezspin") {
-    fileNameOrig <- sub("(\\.[rR])$", "", basename(file))
+    file_name_orig <- sub("(\\.[rR])$", "", basename(file))
   } else if (type == "ezknit") {
-    fileNameOrig <- sub("(\\.[rR]md)$", "", basename(file))
+    file_name_orig <- sub("(\\.[rR]md)$", "", basename(file))
   }
-  fileName <- paste0(fileNameOrig, out_suffix)
-  fileRmdOrig <- file.path(inputDir, paste0(fileNameOrig, ".Rmd"))
-  fileRmd <- file.path(out_dir, paste0(fileName, ".Rmd"))
-  fileMd <- file.path(out_dir, paste0(fileName, ".md"))
-  fileHtml <- file.path(out_dir, paste0(fileName, ".html"))
+  file_name <- paste0(file_name_orig, out_suffix)
+  file_rmd_orig <- file.path(input_dir, paste0(file_name_orig, ".Rmd"))
+  file_rmd <- file.path(out_dir, paste0(file_name, ".Rmd"))
+  file_md <- file.path(out_dir, paste0(file_name, ".md"))
+  file_html <- file.path(out_dir, paste0(file_name, ".html"))
   
   if (missing(fig_dir)) {
-    fig_dir <- fileName
+    fig_dir <- file_name
   }
   
   # On Windows (as opposed to unix systems), file.path does not append a
@@ -240,11 +240,11 @@ ezknitr_helper <- function(type,
   
   # Save a copy of the original knitr and chunk options and revert back to them
   # when the function exits
-  oldOptsKnit <- knitr::opts_knit$get()
-  oldOptsChunk <- knitr::opts_chunk$get()
+  old_opts_knit <- knitr::opts_knit$get()
+  old_opts_chunk <- knitr::opts_chunk$get()
   on.exit({
-    knitr::opts_knit$set(oldOptsKnit)
-    knitr::opts_chunk$set(oldOptsChunk)
+    knitr::opts_knit$set(old_opts_knit)
+    knitr::opts_chunk$set(old_opts_chunk)
   }, add = TRUE)
   
   # Set up the directories correctly (this took many many hours to figure out..)
@@ -256,9 +256,9 @@ ezknitr_helper <- function(type,
   knitr::opts_chunk$set(chunk_opts)
   
   # Create the figure directory if it doesn't exist (otherwise we get errors)
-  fullFigPath <- file.path(knitr::opts_knit$get("base.dir"),
+  full_fig_path <- file.path(knitr::opts_knit$get("base.dir"),
                            knitr::opts_chunk$get("fig.path"))
-  dir.create(fullFigPath, recursive = TRUE, showWarnings = FALSE)
+  dir.create(full_fig_path, recursive = TRUE, showWarnings = FALSE)
   
   # Create any parameters that should be visible to the script in a new
   # environment so that we can knit the script in that isolated environment
@@ -268,8 +268,8 @@ ezknitr_helper <- function(type,
   # Some folder cleanup when the function exists
   on.exit({
     # If no figures are generated, remove the figures folder
-    if (length(list.files(fullFigPath)) == 0) {
-      suppressWarnings(unlink(fullFigPath, recursive = TRUE))
+    if (length(list.files(full_fig_path)) == 0) {
+      suppressWarnings(unlink(full_fig_path, recursive = TRUE))
     }
   }, add = TRUE)
   
@@ -280,28 +280,28 @@ ezknitr_helper <- function(type,
   if (type == "ezspin") {
     knitr::spin(file, format = "Rmd", knit = FALSE, ...)
     if (move_intermediate_file) {
-      file.rename(fileRmdOrig,
-                  fileRmd)
+      file.rename(file_rmd_orig,
+                  file_rmd)
     } else {
-      fileRmd <- fileRmdOrig
+      file_rmd <- file_rmd_orig
     }
   } else if (type == "ezknit") {
-    fileRmd <- file
+    file_rmd <- file
   }
-  knitr::knit(fileRmd,
-              fileMd,
+  knitr::knit(file_rmd,
+              file_md,
               quiet = !verbose,
               envir = ezknitr_env)
-  markdown::markdownToHTML(fileMd,
-                           fileHtml)
+  markdown::markdownToHTML(file_md,
+                           file_html)
   if (!keep_rmd) {
-    unlink(fileRmd)
+    unlink(file_rmd)
   }
   if (!keep_md) {
-    unlink(fileMd)
+    unlink(file_md)
   }
   if (!keep_html) {
-    unlink(fileHtml)
+    unlink(file_html)
   }
   
   message(paste0(type, " output in\n", out_dir))

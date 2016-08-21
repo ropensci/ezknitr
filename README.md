@@ -9,8 +9,11 @@ version](http://www.r-pkg.org/badges/version/ezknitr)](https://cran.r-project.or
 > *Copyright 2016 [Dean Attali](http://deanattali.com). Licensed under
 > the MIT license.*
 
-`ezknitr` is an extension of `knitr` that adds flexibility in several
-ways.
+[`knitr`](https://github.com/yihui/knitr) is a popular package for
+generating dynamic reports in R using the concept of [literate
+programming](http://www.literateprogramming.com/knuthweb.pdf). `ezknitr`
+is an extension of `knitr` that adds flexibility in several ways and
+solves a few issues that are commonly encountered with `knitr`.
 
 One common source of frustration with `knitr` is that it assumes the
 directory where the source file lives should be the working directory,
@@ -86,7 +89,8 @@ works great if you have a flat directory structure like this:
 But what happens if you have a slightly more complex structure? In a
 real project, you rarely have everything just lying around in the same
 folder. Here is an example of a more realistic initial directory
-structure (assume the working directory is set to `project/`):
+structure (assume the working directory/project root is set to
+`project/`):
 
     - project/
       |- analysis/
@@ -95,11 +99,12 @@ structure (assume the working directory is set to `project/`):
          |- input.csv
 
 Now if you want `knitr` to work, you'd have to ensure the path to
-`input.csv` is relative to the `analysis/` directory. This is
-counter-intuitive because most people expect to create paths relative to
-the *working directory* (`project/` in this case), but `knitr` will use
-the `analysis/` folder as the working directory. Any code reading the
-input file needs to use `../data/input.csv` instead of `data/input.csv`.
+`input.csv` is relative to the `analysis/` directory because that's
+where the Rmd file is. This is counter-intuitive because most people
+expect to create paths relative to the *working directory/project root*
+(`project/` in this case), but `knitr` will use the `analysis/` folder
+as the working directory. Any code reading the input file needs to use
+`../data/input.csv` instead of `data/input.csv`.
 
 Other than being confusing, it also means that you cannot naively run
 the Rmd code chunks manually because when you run the code in the
@@ -144,11 +149,12 @@ want:
          |- report.HTML
 
 We didn't explicitly have to set the working direcory, but you can use
-the `wd` argument if you do require a different directory. After running
-`ezknit()`, you can run `open_output_dir()` to open the output directory
-in your file browser if you want to easily see the resulting report.
-Getting a similar directory structure with `knitr` is not simple, but
-with `ezknitr` it's trivial.
+the `wd` argument if you do require a different directory (for example,
+if you are running this from some build script or from any arbitrary
+directory). After running `ezknit()`, you can run `open_output_dir()` to
+open the output directory in your file browser if you want to easily see
+the resulting report. Getting a similar directory structure with `knitr`
+is not simple, but with `ezknitr` it's trivial.
 
 Note that `ezknitr` produces both a markdown and an HTML file for each
 report (you can choose to discard them with the `keep_md` and
@@ -177,8 +183,9 @@ project:
 We can easily use `ezknitr` to run any of the analysis Rmarkdowns on any
 of the datasets and assign the results to a unique output. Let's assume
 that each analysis script expects there to be a variable named
-`DATASET_NAME` that tells the script what data to operate on. The
-following `ezknitr` code illustrates how to achieve the desired output.
+`DATASET_NAME` inside the script that tells the script what data to
+operate on. The following `ezknitr` code illustrates how to achieve the
+desired output.
 
     library(ezknitr)
     ezknit(file = "analysis/explore.Rmd", out_dir = "reports/human",
@@ -219,17 +226,18 @@ in an ouput file named `explore-human.md`.
 <h2 id="experiment">
 Experiment with ezknitr
 </h2>
-After installing the package, you can experiment with `ezknitr` using
-the `setup_ezknit_test()` or `setup_ezspin_test()` functions to see
-their benefits. See `?setup_ezknit_test` for more information.
+After installing and loading the package (`library(ezknitr)`), you can
+experiment with `ezknitr` using the `setup_ezknit_test()` or
+`setup_ezspin_test()` functions to see their benefits. See
+`?setup_ezknit_test` for more information.
 
 <h2 id="spin-vs-knit">
 spin() vs knit()
 </h2>
 `knit()` is the most popular and well-known function from `knitr`. It
-lets you create a markdown document from an Rmarkdown file. I assume if
-you are on this page, you are familiar with `knit()` and Rmarkdown, so I
-won't explain it any further.
+lets you create a markdown document from an Rmarkdown file. You can
+learn more about `knit()` on [the official knitr
+page](http://yihui.name/knitr).
 
 `spin()` is similar, but starts one step further back: it takes an R
 script as input, creates an Rmarkdown document from the R script, and
@@ -252,3 +260,9 @@ files using YAML is a big feature which makes the use of
 important. However, the core problem that `ezknitr` wants to solve is
 the working directory issue, and this issue has yet to be addressed by
 `rmarkdown` or `knitr`, which makes `ezknitr` still useful.
+
+Please note that this project is released with a [Contributor Code of
+Conduct](CONDUCT.md). By participating in this project you agree to
+abide by its terms.
+
+[![ropensci\_footer](http://ropensci.org/public_images/github_footer.png)](http://ropensci.org)

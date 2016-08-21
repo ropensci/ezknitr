@@ -52,13 +52,13 @@ setup_test_helper <- function(type) {
   type <- match.arg(type, c("ezspin", "ezknit"))
   
   if (type == "ezspin") {
-    fileName <- paste0(type, "_test.R")
+    file_name <- paste0(type, "_test.R")
   } else if (type == "ezknit") {
-    fileName <- paste0(type, "_test.Rmd")
+    file_name <- paste0(type, "_test.Rmd")
   }
   
   file <- try(
-    system.file("examples", fileName, package = "ezknitr", mustWork = TRUE),
+    system.file("examples", file_name, package = "ezknitr", mustWork = TRUE),
     silent = TRUE)
   if (class(file) == "try-error") {
     stop("Could not find example file")
@@ -81,9 +81,9 @@ setup_test_helper <- function(type) {
                  "output was created and look at the resulting output to see ",
                  "the differences.\n"))
   
-  message(sprintf('\t1.  knitr::%s("ezknitr_test/R/%s")', substring(type, 3), fileName))
-  message(sprintf('\t2.  ezknitr::%s("R/%s", wd = "ezknitr_test")', type, fileName))
-  message(sprintf('\t3.  ezknitr::%s("R/%s", wd = "ezknitr_test",', type, fileName))
+  message(sprintf('\t1.  knitr::%s("ezknitr_test/R/%s")', substring(type, 3), file_name))
+  message(sprintf('\t2.  ezknitr::%s("R/%s", wd = "ezknitr_test")', type, file_name))
+  message(sprintf('\t3.  ezknitr::%s("R/%s", wd = "ezknitr_test",', type, file_name))
   message(sprintf('\t\t\tout_dir = "output", fig_dir = "coolplots")'))
   
   invisible(testdir)

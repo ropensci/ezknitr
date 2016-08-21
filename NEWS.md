@@ -1,6 +1,7 @@
-# ezknitr 0.4.9000 2016-08-07
+# ezknitr 0.5 2016-08-21
 
 - added JOSS paper
+- revisions based on rOpenSci feedback, mostly modifications to README and other documentation
 
 # ezknitr 0.4 2016-06-12
 
