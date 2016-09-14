@@ -2,7 +2,7 @@ ezknitr - Avoid the typical working directory pain when using 'knitr'
 =====================================================================
 
 [![Build
-Status](https://travis-ci.org/daattali/ezknitr.svg?branch=master)](https://travis-ci.org/daattali/ezknitr)
+Status](https://travis-ci.org/ropenscilabs/ezknitr.svg?branch=master)](https://travis-ci.org/ropenscilabs/ezknitr)
 [![CRAN
 version](http://www.r-pkg.org/badges/version/ezknitr)](https://cran.r-project.org/package=ezknitr)
 
@@ -47,7 +47,7 @@ To install the CRAN version:
 To install the latest developmental version from GitHub:
 
     install.packages("devtools")
-    devtools::install_github("daattali/ezknitr")
+    devtools::install_github("ropenscilabs/ezknitr")
 
 <h2 id="overview">
 Overview
