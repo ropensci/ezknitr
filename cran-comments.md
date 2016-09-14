@@ -42,3 +42,21 @@ R CMD check ran without any errors, warnings, or notes
 2016-06-12 Uwe Ligges
 
 Thanks, on CRAN now.
+
+# Version 0.5
+
+### Test environments
+
+* Windows 7, R 3.3.1 (local)
+* ubuntu 12.04, R 3.3.1 (on travis-ci)
+* ubuntu 14.04, R 3.2.1 (on my DigitalOcean droplet)
+
+## Round 1
+
+### Submission comments
+
+2016-09-13
+
+No errors, warnings, or notes
+
+### Reviewer comments
