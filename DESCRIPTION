@@ -9,8 +9,8 @@ Description: An extension of 'knitr' that adds flexibility in several
     which is often not true. 'ezknitr' addresses this problem by giving you
     complete control over where all the inputs and outputs are, and adds several
     other convenient features to make rendering markdown/HTML documents easier.
-URL: https://github.com/daattali/ezknitr
-BugReports: https://github.com/daattali/ezknitr/issues
+URL: https://github.com/ropenscilabs/ezknitr
+BugReports: https://github.com/ropenscilabs/ezknitr/issues
 Depends: 
     R (>= 3.0.2)
 Imports: 
