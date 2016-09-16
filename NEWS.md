@@ -1,3 +1,7 @@
+# ezknitr 0.6 2016-09-15
+
+- GitHub repository ownership transferred from daattali to rOpenSciLabs
+
 # ezknitr 0.5 2016-08-21
 
 - added JOSS paper
