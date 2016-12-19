@@ -1,6 +1,6 @@
 Package: ezknitr
 Title: Avoid the Typical Working Directory Pain When Using 'knitr'
-Version: 0.6
+Version: 0.6.1
 Authors@R: person("Dean", "Attali", email = "daattali@gmail.com",
     role = c("aut", "cre"))
 Description: An extension of 'knitr' that adds flexibility in several
