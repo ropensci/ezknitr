@@ -1,3 +1,8 @@
+# ezknitr 0.6.1 2016-12-19
+
+- GitHub repository ownership transferred from ropenscilabs to ropensci
+
+
 # ezknitr 0.6 2016-09-15
 
 - GitHub repository ownership transferred from daattali to rOpenSciLabs
