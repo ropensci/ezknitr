@@ -5,6 +5,7 @@ ezknitr - Avoid the typical working directory pain when using 'knitr'
 Status](https://travis-ci.org/ropensci/ezknitr.svg?branch=master)](https://travis-ci.org/ropensci/ezknitr)
 [![CRAN
 version](http://www.r-pkg.org/badges/version/ezknitr)](https://cran.r-project.org/package=ezknitr)
+[![codecov.io](https://codecov.io/github/ropensci/ezknitr/coverage.svg?branch=master)](https://codecov.io/github/ropensci/ezknitr?branch=master)
 
 > *Copyright 2016 [Dean Attali](http://deanattali.com). Licensed under
 > the MIT license.*
