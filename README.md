@@ -6,6 +6,7 @@ Status](https://travis-ci.org/ropensci/ezknitr.svg?branch=master)](https://travi
 [![CRAN
 version](http://www.r-pkg.org/badges/version/ezknitr)](https://cran.r-project.org/package=ezknitr)
 [![codecov.io](https://codecov.io/github/ropensci/ezknitr/coverage.svg?branch=master)](https://codecov.io/github/ropensci/ezknitr?branch=master)
+[![](https://badges.ropensci.org/56_status.svg)](https://github.com/ropensci/onboarding/issues/56)
 
 > *Copyright 2016 [Dean Attali](http://deanattali.com). Licensed under
 > the MIT license.*
