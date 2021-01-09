@@ -15,7 +15,7 @@ knitr::opts_chunk$set(tidy = FALSE, comment = "#>")
 
 # ezknitr - Avoid the typical working directory pain when using 'knitr'
 
-[![Build Status](https://travis-ci.org/ropensci/ezknitr.svg?branch=master)](https://travis-ci.org/ropensci/ezknitr)
+[![R Build Status](https://github.com/ropensci/ezknitr/workflows/R-CMD-check/badge.svg)](https://github.com/ropensci/ezknitr/actions)
 [![CRAN version](http://www.r-pkg.org/badges/version/ezknitr)](https://cran.r-project.org/package=ezknitr)
 
 > *Copyright 2016 [Dean Attali](http://deanattali.com). Licensed under the MIT license.*

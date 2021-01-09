@@ -1,6 +1,6 @@
 ^.*\.Rproj$
 ^\.Rproj\.user$
 ^cran-comments\.md$
-^\.travis\.yml$
 ^Makefile$
 ^CONDUCT\.md$
+^\.github$

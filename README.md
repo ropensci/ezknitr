@@ -1,8 +1,7 @@
 ezknitr - Avoid the typical working directory pain when using 'knitr'
 =====================================================================
 
-[![Build
-Status](https://travis-ci.org/ropensci/ezknitr.svg?branch=master)](https://travis-ci.org/ropensci/ezknitr)
+[![R Build Status](https://github.com/ropensci/ezknitr/workflows/R-CMD-check/badge.svg)](https://github.com/ropensci/ezknitr/actions)
 [![CRAN
 version](http://www.r-pkg.org/badges/version/ezknitr)](https://cran.r-project.org/package=ezknitr)
 [![codecov.io](https://codecov.io/github/ropensci/ezknitr/coverage.svg?branch=master)](https://codecov.io/github/ropensci/ezknitr?branch=master)
