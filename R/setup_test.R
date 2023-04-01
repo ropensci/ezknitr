@@ -60,7 +60,7 @@ setup_test_helper <- function(type) {
   file <- try(
     system.file("examples", file_name, package = "ezknitr", mustWork = TRUE),
     silent = TRUE)
-  if (class(file) == "try-error") {
+  if (inherits(file, "try-error")) {
     stop("Could not find example file")
   }
   

@@ -9,7 +9,7 @@ Description: An extension of 'knitr' that adds flexibility in several
     which is often not true. 'ezknitr' addresses this problem by giving you
     complete control over where all the inputs and outputs are, and adds several
     other convenient features to make rendering markdown/HTML documents easier.
-URL: https://docs.ropensci.org/ezknitr, https://github.com/ropensci/ezknitr
+URL: https://docs.ropensci.org/ezknitr/, https://github.com/ropensci/ezknitr
 BugReports: https://github.com/ropensci/ezknitr/issues
 Depends: 
     R (>= 3.0.2)

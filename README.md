@@ -236,7 +236,7 @@ spin() vs knit()
 `knit()` is the most popular and well-known function from `knitr`. It
 lets you create a markdown document from an Rmarkdown file. You can
 learn more about `knit()` on [the official knitr
-page](https://yihui.name/knitr).
+page](https://yihui.org/knitr/).
 
 `spin()` is similar, but starts one step further back: it takes an R
 script as input, creates an Rmarkdown document from the R script, and
@@ -261,7 +261,7 @@ the working directory issue, and this issue has yet to be addressed by
 `rmarkdown` or `knitr`, which makes `ezknitr` still useful.
 
 Please note that this project is released with a [Contributor Code of
-Conduct](CONDUCT.md). By participating in this project you agree to
+Conduct](https://ropensci.org/code-of-conduct/). By participating in this project you agree to
 abide by its terms.
 
 [![ropensci\_footer](https://ropensci.org/public_images/github_footer.png)](https://ropensci.org)
