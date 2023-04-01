@@ -4,9 +4,8 @@ ezknitr - Avoid the typical working directory pain when using 'knitr'
 [![R Build Status](https://github.com/ropensci/ezknitr/workflows/R-CMD-check/badge.svg)](https://github.com/ropensci/ezknitr/actions)
 [![CRAN
 version](http://www.r-pkg.org/badges/version/ezknitr)](https://cran.r-project.org/package=ezknitr)
-[![codecov.io](https://codecov.io/github/ropensci/ezknitr/coverage.svg?branch=master)](https://codecov.io/github/ropensci/ezknitr?branch=master)
 
-> *Copyright 2016 [Dean Attali](http://deanattali.com). Licensed under
+> *Copyright 2023 [Dean Attali](http://deanattali.com). Licensed under
 > the MIT license.*
 
 [`knitr`](https://github.com/yihui/knitr) is a popular package for
