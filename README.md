@@ -10,7 +10,7 @@ version](https://www.r-pkg.org/badges/version/ezknitr)](https://cran.r-project.o
 
 [`knitr`](https://github.com/yihui/knitr) is a popular package for
 generating dynamic reports in R using the concept of [literate
-programming](https://www.literateprogramming.com/knuthweb.pdf). `ezknitr`
+programming](http://www.literateprogramming.com/knuthweb.pdf). `ezknitr`
 is an extension of `knitr` that adds flexibility in several ways and
 solves a few issues that are commonly encountered with `knitr`.
 

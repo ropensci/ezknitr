@@ -20,7 +20,7 @@ knitr::opts_chunk$set(tidy = FALSE, comment = "#>")
 
 > *Copyright 2016 [Dean Attali](https://deanattali.com). Licensed under the MIT license.*
 
-[`knitr`](https://github.com/yihui/knitr) is a popular package for generating dynamic reports in R using the concept of [literate programming](https://www.literateprogramming.com/knuthweb.pdf). `ezknitr` is an extension of `knitr` that adds flexibility in several ways and solves a few issues that are commonly encountered with `knitr`.
+[`knitr`](https://github.com/yihui/knitr) is a popular package for generating dynamic reports in R using the concept of [literate programming](http://www.literateprogramming.com/knuthweb.pdf). `ezknitr` is an extension of `knitr` that adds flexibility in several ways and solves a few issues that are commonly encountered with `knitr`.
 
 One common source of frustration with `knitr` is that it assumes the directory where the source file lives should be the working directory, which is often not true. `ezknitr` addresses this problem by giving you complete control over where all the inputs and outputs are, and adds several other convenient features. The two main functions are `ezknit()` and `ezspin()`, which are wrappers around `knitr`'s `knit()` and `spin()`, used to make rendering markdown/HTML documents easier. 
 
