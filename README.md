@@ -3,14 +3,14 @@ ezknitr - Avoid the typical working directory pain when using 'knitr'
 
 [![R Build Status](https://github.com/ropensci/ezknitr/workflows/R-CMD-check/badge.svg)](https://github.com/ropensci/ezknitr/actions)
 [![CRAN
-version](http://www.r-pkg.org/badges/version/ezknitr)](https://cran.r-project.org/package=ezknitr)
+version](https://www.r-pkg.org/badges/version/ezknitr)](https://cran.r-project.org/package=ezknitr)
 
-> *Copyright 2023 [Dean Attali](http://deanattali.com). Licensed under
+> *Copyright 2023 [Dean Attali](https://deanattali.com). Licensed under
 > the MIT license.*
 
 [`knitr`](https://github.com/yihui/knitr) is a popular package for
 generating dynamic reports in R using the concept of [literate
-programming](http://www.literateprogramming.com/knuthweb.pdf). `ezknitr`
+programming](https://www.literateprogramming.com/knuthweb.pdf). `ezknitr`
 is an extension of `knitr` that adds flexibility in several ways and
 solves a few issues that are commonly encountered with `knitr`.
 
@@ -236,7 +236,7 @@ spin() vs knit()
 `knit()` is the most popular and well-known function from `knitr`. It
 lets you create a markdown document from an Rmarkdown file. You can
 learn more about `knit()` on [the official knitr
-page](http://yihui.name/knitr).
+page](https://yihui.name/knitr).
 
 `spin()` is similar, but starts one step further back: it takes an R
 script as input, creates an Rmarkdown document from the R script, and
@@ -245,7 +245,7 @@ useful in situations where you develop a large R script and want to be
 able to produce reports from it directly instead of having to copy
 chunks into a separate Rmarkdown file. You can read more about why I
 like `spin()` in the blog post ["knitr's best hidden gem:
-spin"](http://deanattali.com/2015/03/24/knitrs-best-hidden-gem-spin/).
+spin"](https://deanattali.com/2015/03/24/knitrs-best-hidden-gem-spin/).
 
 <h2 id="using-render">
 Using rmarkdown::render()
@@ -264,4 +264,4 @@ Please note that this project is released with a [Contributor Code of
 Conduct](CONDUCT.md). By participating in this project you agree to
 abide by its terms.
 
-[![ropensci\_footer](http://ropensci.org/public_images/github_footer.png)](http://ropensci.org)
+[![ropensci\_footer](https://ropensci.org/public_images/github_footer.png)](https://ropensci.org)

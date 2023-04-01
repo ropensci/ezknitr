@@ -16,11 +16,11 @@ knitr::opts_chunk$set(tidy = FALSE, comment = "#>")
 # ezknitr - Avoid the typical working directory pain when using 'knitr'
 
 [![R Build Status](https://github.com/ropensci/ezknitr/workflows/R-CMD-check/badge.svg)](https://github.com/ropensci/ezknitr/actions)
-[![CRAN version](http://www.r-pkg.org/badges/version/ezknitr)](https://cran.r-project.org/package=ezknitr)
+[![CRAN version](https://www.r-pkg.org/badges/version/ezknitr)](https://cran.r-project.org/package=ezknitr)
 
-> *Copyright 2016 [Dean Attali](http://deanattali.com). Licensed under the MIT license.*
+> *Copyright 2016 [Dean Attali](https://deanattali.com). Licensed under the MIT license.*
 
-[`knitr`](https://github.com/yihui/knitr) is a popular package for generating dynamic reports in R using the concept of [literate programming](http://www.literateprogramming.com/knuthweb.pdf). `ezknitr` is an extension of `knitr` that adds flexibility in several ways and solves a few issues that are commonly encountered with `knitr`.
+[`knitr`](https://github.com/yihui/knitr) is a popular package for generating dynamic reports in R using the concept of [literate programming](https://www.literateprogramming.com/knuthweb.pdf). `ezknitr` is an extension of `knitr` that adds flexibility in several ways and solves a few issues that are commonly encountered with `knitr`.
 
 One common source of frustration with `knitr` is that it assumes the directory where the source file lives should be the working directory, which is often not true. `ezknitr` addresses this problem by giving you complete control over where all the inputs and outputs are, and adds several other convenient features. The two main functions are `ezknit()` and `ezspin()`, which are wrappers around `knitr`'s `knit()` and `spin()`, used to make rendering markdown/HTML documents easier. 
 
@@ -172,9 +172,9 @@ After installing and loading the package (`library(ezknitr)`), you can experimen
 
 <h2 id="spin-vs-knit">spin() vs knit()</h2>
 
-`knit()` is the most popular and well-known function from `knitr`. It lets you create a markdown document from an Rmarkdown file. You can learn more about `knit()` on [the official knitr page](http://yihui.name/knitr).
+`knit()` is the most popular and well-known function from `knitr`. It lets you create a markdown document from an Rmarkdown file. You can learn more about `knit()` on [the official knitr page](https://yihui.name/knitr).
 
-`spin()` is similar, but starts one step further back: it takes an R script as input, creates an Rmarkdown document from the R script, and then proceeds to create a markdown document from it. `spin()` can be useful in situations where you develop a large R script and want to be able to produce reports from it directly instead of having to copy chunks into a separate Rmarkdown file. You can read more about why I like `spin()` in the blog post ["knitr's best hidden gem: spin"](http://deanattali.com/2015/03/24/knitrs-best-hidden-gem-spin/).
+`spin()` is similar, but starts one step further back: it takes an R script as input, creates an Rmarkdown document from the R script, and then proceeds to create a markdown document from it. `spin()` can be useful in situations where you develop a large R script and want to be able to produce reports from it directly instead of having to copy chunks into a separate Rmarkdown file. You can read more about why I like `spin()` in the blog post ["knitr's best hidden gem: spin"](https://deanattali.com/2015/03/24/knitrs-best-hidden-gem-spin/).
 
 <h2 id="using-render">Using rmarkdown::render()</h2>
 
@@ -182,4 +182,4 @@ When the core of this package was developed, none of its functionality was suppo
 
 Please note that this project is released with a [Contributor Code of Conduct](CONDUCT.md). By participating in this project you agree to abide by its terms.
 
-[![ropensci_footer](http://ropensci.org/public_images/github_footer.png)](http://ropensci.org)
+[![ropensci_footer](https://ropensci.org/public_images/github_footer.png)](https://ropensci.org)
