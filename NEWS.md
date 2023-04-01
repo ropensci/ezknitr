@@ -1,7 +1,10 @@
+# ezknitr 0.6.2 2023-04-01
+
+- Small maintenance work to keep the package on CRAN
+
 # ezknitr 0.6.1 2016-12-19
 
 - GitHub repository ownership transferred from ropenscilabs to ropensci
-
 
 # ezknitr 0.6 2016-09-15
 
