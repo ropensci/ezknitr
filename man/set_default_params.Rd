@@ -28,4 +28,3 @@ set_default_params(list(foo = 10, bar = 20))
 print(foo)
 print(bar)
 }
-

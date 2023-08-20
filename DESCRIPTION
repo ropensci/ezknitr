@@ -23,4 +23,4 @@ Suggests:
 License: MIT + file LICENSE
 SystemRequirements: pandoc with https support
 VignetteBuilder: knitr
-RoxygenNote: 5.0.1
+RoxygenNote: 7.2.3

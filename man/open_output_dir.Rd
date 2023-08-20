@@ -20,4 +20,3 @@ ezspin("R/ezspin_test.R", wd = "ezknitr_test")
 open_output_dir()
 }
 }
-
