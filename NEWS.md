@@ -1,3 +1,7 @@
+# ezknitr 0.6.3 2023-08-19
+
+- More maintenance work for CRAN
+
 # ezknitr 0.6.2 2023-04-01
 
 - Small maintenance work to keep the package on CRAN
